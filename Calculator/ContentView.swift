@@ -61,7 +61,7 @@ struct ContentView: View {
                                 .frame(width: button == "History" ? 300 : 80, height: 80)
                                 .background(buttonBackground(button))
                                 .foregroundColor(.white)
-                                .cornerRadius(10)
+                                .cornerRadius(20)
                         })
                     }
                 }
