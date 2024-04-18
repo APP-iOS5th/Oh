@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum PrevPressed {
-    case initial
     case number
     case inputOperator
 }
@@ -23,7 +22,7 @@ enum PrevOperator {
 
 struct ContentView: View {
     @State private var text: String = ""
-    @State private var prevPressed: PrevPressed = .initial
+    @State private var prevPressed: PrevPressed = .inputOperator
     @State private var prevOperator: PrevOperator = .plus
     @State private var lhs = 0
     @State private var rhs = 0
@@ -156,7 +155,7 @@ struct ContentView: View {
                     text = ""
                     lhs = 0
                     rhs = 0
-                    prevPressed = .number
+                    prevPressed = .inputOperator
                     prevOperator = .plus
                 }
                 .font(.largeTitle)
@@ -184,10 +183,6 @@ struct ContentView: View {
     }
     func pressNumber(number: Int) -> Void {
         switch prevPressed {
-        case .initial:
-            rhs = number
-            text += String(number)
-            prevPressed = .number
         case .number:
             rhs = rhs * 10 + number
             text += String(number)
@@ -204,8 +199,6 @@ struct ContentView: View {
     }
     func pressOperator(inputOperator: PrevOperator) -> Void {
         switch prevPressed {
-        case .initial:
-            print("Wrong Input")
         case .number:
             switch prevOperator {
             case .plus:
@@ -234,6 +227,12 @@ struct ContentView: View {
             prevOperator = inputOperator
             prevPressed = .inputOperator
         case .inputOperator:
+            switch prevOperator {
+            case .equal:
+                print("not yet")
+            default:
+                print("Wrong Input")
+            }
             print("Wrong Input")
         }
     }
