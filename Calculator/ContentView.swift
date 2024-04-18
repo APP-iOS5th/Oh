@@ -27,9 +27,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            // HStack for display and backspace button
             HStack {
-                // Display text
                 Text(display)
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -38,7 +36,6 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .lineSpacing(10.0)
 
-                // Backspace button
                 Button(action: {
                     self.handleButtonPress("<")
                 }, label: {
@@ -52,18 +49,16 @@ struct ContentView: View {
                 })
             }
 
-            // 계산기 button grid
             ForEach(buttons, id: \.self) { row in
                 HStack(spacing: 12) {
                     ForEach(row, id: \.self) { button in
                         Button(action: {
-                            // 버튼 click handler
-                            handleButtonPress(button)
+                            self.handleButtonPress(button)
                         }, label: {
                             Text(button)
                                 .font(.title)
                                 .fontWeight(.semibold)
-                                .frame(width: 80, height: 80)
+                                .frame(width: button == "History" ? 300 : 80, height: 80)
                                 .background(buttonBackground(button))
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
@@ -78,7 +73,6 @@ struct ContentView: View {
         }
     }
     
-    // 버튼 배경 색상
     func buttonBackground(_ button: String) -> Color {
         switch button {
         case "+", "-", "X", "=", "<":
@@ -92,7 +86,6 @@ struct ContentView: View {
         }
     }
     
-    // 계산기 버튼 클릭 핸들러
     func handleButtonPress(_ button: String) {
         switch button {
         case "C":
@@ -132,7 +125,6 @@ struct ContentView: View {
         }
     }
     
-    // 계산 함수
     func calculate() -> String {
         if let num1 = Double(operand1), let num2 = Double(operand2) {
             var result = ""
