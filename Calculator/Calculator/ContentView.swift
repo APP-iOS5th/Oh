@@ -7,47 +7,41 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-    @State private var displayValue: String = "0"
-    @State private var resultNumber: Int = 0
+    @State var inputValue: String = "0"
     
-    let buttons: [[String]] = [
+    let buttons = [
         ["7", "8", "9", "/"],
         ["4", "5", "6", "*"],
         ["1", "2", "3", "-"],
-        ["0", ".", "=", "+"]
+        [".", "0", "C", "+"],
+        ["="]
     ]
     
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            // 디스플레이 영역
-            Text(displayValue)
-                .font(.largeTitle)
+        VStack {
+            Text(inputValue)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .font(.system(size: 100))
                 .padding()
-            // 버튼 배열
+                .background(Color.gray.opacity(0.2))
+            
             ForEach(buttons, id: \.self) { row in
-                HStack(spacing: 20) {
-                    ForEach(row, id: \.self) { button in
-                        Button(button) {
-                            // 버튼 처리 로직
-                            self.buttonTapped(button)
+                HStack {
+                    ForEach(row, id: \.self) { buttonChar in
+                        Button(action: {
+                            print(buttonChar)
+                        }) {
+                            Text(buttonChar)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .font(.system(size: 48))
+                                .foregroundStyle(buttonChar == "C" ? .red : .black)
+                                .border(Color.gray, width: 1)
                         }
-                        .font(.title)
-                        .frame(width: 64, height: 64)
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(32)
                     }
                 }
             }
         }
-        .padding()
-    }
-    
-    private func buttonTapped(_ button: String) {
-        // 버튼 클릭 처리 로직
     }
 }
 
