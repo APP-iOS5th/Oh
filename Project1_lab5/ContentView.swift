@@ -88,6 +88,9 @@ struct ContentView: View {
             text += String(number)
             prevPressed = .number
         case .inputOperator:
+            if text == "0" {
+                text = ""
+            }
             if prevOperator == .equal {
                 print("새로운 계산을 하려면 초기화하세요")
             } else {
