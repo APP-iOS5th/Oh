@@ -13,7 +13,8 @@ struct ContentView: View {
         ["1", "2", "3", "X"],
         ["4", "5", "6", "-"],
         ["7", "8", "9", "+"],
-        ["C", "0", ".", "="]
+        ["C", "0", ".", "="],
+        ["History"]
     ]
     
     @State var display = "0"
@@ -21,7 +22,9 @@ struct ContentView: View {
     @State var operand2 = ""
     @State var operation = ""
     @State var clearDisplay = true
-    
+    @State var history: [String] = []
+    @State var showingHistory = false
+
     var body: some View {
         VStack(spacing: 10) {
             // HStack for display and backspace button
@@ -70,6 +73,9 @@ struct ContentView: View {
             }
         }
         .padding(12)
+        .sheet(isPresented: $showingHistory) {
+            HistoryView(history: history)
+        }
     }
     
     // 버튼 배경 색상
@@ -77,7 +83,7 @@ struct ContentView: View {
         switch button {
         case "+", "-", "X", "=", "<":
             return Color.orange
-        case "C":
+        case "C", "History":
             return Color.black
         case ".":
             return Color.black
@@ -108,13 +114,14 @@ struct ContentView: View {
             operation = ""
             clearDisplay = true
         case "<":
-            // "<" 버튼: 마지막 숫자를 삭제
             if !display.isEmpty && display != "0" {
                 display.removeLast()
                 if display.isEmpty {
                     display = "0"
                 }
             }
+        case "History":
+            showingHistory = true
         default:
             if clearDisplay {
                 display = button
@@ -128,18 +135,31 @@ struct ContentView: View {
     // 계산 함수
     func calculate() -> String {
         if let num1 = Double(operand1), let num2 = Double(operand2) {
+            var result = ""
             switch operation {
             case "X":
-                return String(num1 * num2)
+                result = "\(operand1) X \(operand2) = \(num1 * num2)"
             case "-":
-                return String(num1 - num2)
+                result = "\(operand1) - \(operand2) = \(num1 - num2)"
             case "+":
-                return String(num1 + num2)
+                result = "\(operand1) + \(operand2) = \(num1 + num2)"
             default:
-                return "0"
+                result = "0"
             }
+            history.append(result)
+            return String(result.split(separator: "=").last?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0")
         } else {
             return "0"
+        }
+    }
+}
+
+struct HistoryView: View {
+    let history: [String]
+    
+    var body: some View {
+        List(history, id: \.self) { item in
+            Text(item)
         }
     }
 }
