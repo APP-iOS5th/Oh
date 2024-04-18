@@ -21,166 +21,66 @@ enum PrevOperator {
 }
 
 struct ContentView: View {
-    @State private var text: String = ""
+    @State private var text: String = "0"
     @State private var prevPressed: PrevPressed = .inputOperator
     @State private var prevOperator: PrevOperator = .plus
     @State private var lhs = 0
     @State private var rhs = 0
-    
+    let buttons = [
+        ["7","8","9","/"],
+        ["4","5","6","*"],
+        ["1","2","3","-"],
+        [".","0","C","+"]
+    ]
     var body: some View {
         VStack {
             Text(text)
                 .font(.largeTitle)
-                .frame(width: 300, height: 50)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding()
                 .border(Color.black, width: 2)
-            
-            HStack() {
-                Button("7") {
-                    pressNumber(number: 7)
+            ForEach(buttons, id: \.self) { row in
+                HStack {
+                    ForEach(row, id: \.self) { buttonChar in
+                        Button(buttonChar){
+                            switch buttonChar {
+                            case "/" :
+                                pressOperator(inputOperator: .devide)
+                            case "*" :
+                                pressOperator(inputOperator: .multiply)
+                            case "+" :
+                                pressOperator(inputOperator: .plus)
+                            case "-" :
+                                pressOperator(inputOperator: .minus)
+                            case "C":
+                                {
+                                    text = "0"
+                                    lhs = 0
+                                    rhs = 0
+                                    prevPressed = .inputOperator
+                                    prevOperator = .plus
+                                } ()
+                            default :
+                                pressNumber(number: Int(buttonChar) ?? 0)
+                            }
+                        }
+                        .font(.largeTitle)
+                        .foregroundColor(buttonChar == "C" ? .red : .black)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .border(Color.black, width: 2)
+                    }
                 }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("8") {
-                    pressNumber(number: 8)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("9") {
-                    pressNumber(number: 9)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("/") {
-                    pressOperator(inputOperator: .devide)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-            }
-            HStack() {
-                Button("4") {
-                    pressNumber(number: 4)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("5") {
-                    pressNumber(number: 5)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("6") {
-                    pressNumber(number: 6)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("*") {
-                    pressOperator(inputOperator: .multiply)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-            }
-            
-            HStack() {
-                Button("1") {
-                    pressNumber(number: 1)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("2") {
-                    pressNumber(number: 2)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("3") {
-                    pressNumber(number: 3)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("-") {
-                    pressOperator(inputOperator: .minus)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-            }
-            HStack() {
-                Button(".") {
-                    //                    pressOperator(inputOperator: ".")
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("0") {
-                    pressNumber(number: 0)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("C") {
-                    text = ""
-                    lhs = 0
-                    rhs = 0
-                    prevPressed = .inputOperator
-                    prevOperator = .plus
-                }
-                .font(.largeTitle)
-                .foregroundColor(.red)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
-                
-                Button("+") {
-                    pressOperator(inputOperator: .plus)
-                }
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .frame(width: 70, height: 100)
-                .border(Color.black, width: 2)
             }
             Button("=") {
                 pressOperator(inputOperator: .equal)
             }
             .font(.largeTitle)
             .foregroundColor(.black)
-            .frame(width: 300, height: 100)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .border(Color.black, width: 2)
-        }.padding()
-        
+        }.padding(30)
     }
+    
     func pressNumber(number: Int) -> Void {
         switch prevPressed {
         case .number:
@@ -197,6 +97,7 @@ struct ContentView: View {
             }
         }
     }
+    
     func pressOperator(inputOperator: PrevOperator) -> Void {
         switch prevPressed {
         case .number:
