@@ -229,16 +229,27 @@ struct ContentView: View {
         case .inputOperator:
             switch prevOperator {
             case .equal:
-                print("not yet")
+                switch inputOperator {
+                case .plus:
+                    text += "+"
+                case .minus:
+                    text += "-"
+                case .devide:
+                    text += "/"
+                case .multiply:
+                    text += "*"
+                case .equal:
+                    text = String(lhs)
+                }
+                prevOperator = inputOperator
+                prevPressed = .inputOperator
             default:
                 print("Wrong Input")
             }
             print("Wrong Input")
         }
     }
-    
 }
-// 3 + 5 -
 
 #Preview {
     ContentView()
