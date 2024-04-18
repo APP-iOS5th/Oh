@@ -30,7 +30,6 @@ struct ContentView: View {
                     ForEach(row, id: \.self) { buttonChar in
                         Button(action: {
                             buttonTapped(buttonChar)
-
                         }) {
                             Text(buttonChar)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -62,6 +61,15 @@ struct ContentView: View {
         default:
             inputValue += button
             
+        }
+    }
+    
+    func calculate() {
+        let expression = NSExpression(format: inputValue)
+        if let value = expression.expressionValue(with: nil, context: nil) as? Double {
+            inputValue = String(value)
+        } else {
+            inputValue = "Invalid input"
         }
     }
 }
