@@ -1,6 +1,6 @@
-# Week 4 SwiftUI Calculator App
+# Week 4 Calculator App
 
-### Info : This project using SwiftUI Calculator App 
+### Info : Creating Calculator App with SwiftUI 
 
 ### Function: 
 (1) 사칙연산(덧셈, 뺄셈, 곱셈, "="으로 결과값 출력) 
