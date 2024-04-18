@@ -11,11 +11,11 @@ struct ContentView: View {
     @State var inputValue = "0"
     
     let buttons = [
-    ["7","8","9", "/"],
-    ["4","5","6", "*"],
-    ["1","2","3", "-"],
-    [".","0","C", "+"],
-    ["="]
+        ["7","8","9", "/"],
+        ["4","5","6", "*"],
+        ["1","2","3", "-"],
+        [".","0","C", "+"],
+        ["="]
     ]
     
     var body: some View {
@@ -29,12 +29,12 @@ struct ContentView: View {
                 HStack{
                     ForEach(row, id: \.self) { buttonChar in
                         Button(action: {
-                            print(buttonChar)
+                            buttonTapped(buttonChar)
                         }){
                             Text(buttonChar)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .font(.system(size: 48))
-                                .foregroundStyle(buttonChar == "C" ? Color.red : Color.blue)
+                                .foregroundStyle(buttonChar == "C" ? Color.red : Color.black)
                                 .border(Color.gray, width: 1)
                         }
                         
@@ -44,9 +44,50 @@ struct ContentView: View {
             
         }
     }
+    func buttonTapped(_ button: String){
+        if(inputValue == "0"){
+            inputValue = ""
+        }
+        switch button {
+        case "=":
+            calculate()
+        case "C":
+            inputValue = "0"
+        case "+", "-", "*", "/":
+            if["+", "-", "*", "/"].contains(inputValue.suffix(1)){
+                inputValue.removeLast()
+            }
+            inputValue += button
+        default:
+            inputValue += button
+            
+            
+        }
+        func calculate() {
+            let operators: [Character] = ["+","-", "*", "/"]
+            if operators.contains(inputValue.suffix(1)){
+                inputValue = "Invalid Input"
+                return
+            }
+            
+            var numbers = [Double]()
+            var currentNumber = ""
+            var currentOperator = "+"
+            
+            for char in inputValue {
+                let expression = NSExpression(format: inputValue)
+                       if let value = expression.expressionValue(with: nil, context: nil) as? Double {
+                           inputValue = String(value)
+                       } else {
+                           inputValue = "Invalid input"
+                       }
+            }
+        }
+        
+    }
 }
-
 
 #Preview {
     ContentView()
 }
+
