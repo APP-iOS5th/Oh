@@ -1,4 +1,4 @@
-# Week 4 Calculator App
+# Week 4. Calculator App
 
 * Info : Creating Calculator App with SwiftUI 
 
