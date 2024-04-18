@@ -8,34 +8,64 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var inputValue = "0"
+    
     let buttons = [
-    ["7","8", "9", "/"],
-    ["4","5", "6", "*"],
-    ["1","2", "3", "-"],
-    [".","0", "C", "+"],
-    ["="]
+        ["7","8", "9", "/"],
+        ["4","5", "6", "*"],
+        ["1","2", "3", "-"],
+        [".","0", "C", "+"],
+        ["="]
     ]
     
     var body: some View {
         VStack {
-          
+            Text(inputValue)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .font(.system(size: 48))
+                .padding()
+                .background(Color.gray.opacity(0.2))
             ForEach(buttons, id: \.self) { row in
                 HStack {
                     ForEach(row, id: \.self) { buttonChar in
-                        Button(action: {}) {
+                        Button(action: {
+                            buttonTapped(buttonChar)
+
+                        }) {
                             Text(buttonChar)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .font(.system(size: 48))
                                 .foregroundColor(buttonChar == "C" ? .red : .black)
-                                .border(Color.gray.opacity(0.2))
+                                .border(Color.gray, width: 1)
                         }
                     }
                 }
             }
         }
     }
+    
+    func buttonTapped(_ button: String) {
+        if(inputValue == "0") {
+            inputValue = ""
+        }
+        
+        switch button {
+        case "=":
+            print("Calculate!")
+        case "C":
+            inputValue = "0"
+        case "+","-","*","/":
+            if ["+","-","*","/"].contains(inputValue.suffix(1)) {
+                inputValue.removeLast()
+            }
+            inputValue += button
+        default:
+            inputValue += button
+            
+        }
+    }
 }
-
+                
 #Preview {
     ContentView()
 }
