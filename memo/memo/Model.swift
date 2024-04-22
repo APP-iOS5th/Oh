@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftData
 
+// swift model 추가
 @Model
 class Memo: Identifiable {
     var id: UUID = UUID()

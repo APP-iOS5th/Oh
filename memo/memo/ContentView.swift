@@ -16,8 +16,8 @@ struct ContentView: View {
     
     @State var isSheetShowing: Bool = false
     @State var memoText: String = ""
-    @State var memoColor: Color = .blue
-    let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
+//    @State var memoColor: Color = .blue
+//    let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
     var body: some View {
         NavigationStack {
             List(memos) { memo in
@@ -36,6 +36,7 @@ struct ContentView: View {
                 .contextMenu{
                     ShareLink(item: memo.text)
                     Button{
+                        // 삭제시 swift data에서 삭제
                         modelContext.delete(memo)
                     } label: {
                         Image(systemName: "trash.slash")
@@ -52,7 +53,7 @@ struct ContentView: View {
                     }
                 }
             }.sheet(isPresented: $isSheetShowing) {
-                MemoAddView( isSheetShowing:$isSheetShowing, memoText: $memoText, memoColor: $memoColor, colors: colors)
+                MemoAddView( isSheetShowing:$isSheetShowing, memoText: $memoText)
             }
         }
     }
@@ -60,4 +61,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .modelContainer(for: Memo.self)
 }

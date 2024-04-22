@@ -11,8 +11,8 @@ struct MemoAddView: View {
     @Environment(\.modelContext) var modelContext
     @Binding var isSheetShowing: Bool
     @Binding var memoText: String
-    @Binding var memoColor: Color
-    let colors: [Color]
+//    @Binding var memoColor: Color
+//    let colors: [Color]
     
     var body: some View {
         VStack {
@@ -23,35 +23,20 @@ struct MemoAddView: View {
                 Spacer()
                 Button("완료"){
 //                    memoStore.addMemo(memoText)
+                    
+                    // 완료시 swift data 에 하나씩 추가
                     modelContext.insert(Memo(text: memoText, created: Date()))
                     isSheetShowing = false
                 }.disabled(memoText.isEmpty)
             }
-            HStack{
-                ForEach(colors, id: \.self) { color in
-                    Button{ memoColor = color } label: {
-                        HStack {
-                            Spacer()
-                            if color == memoColor {
-                                Image(systemName: "checkmark.circle")
-                            }
-                            Spacer()
-                        }
-                        .padding()
-                        .frame(height: 50)
-                        .foregroundStyle(.white)
-                        .background(color)
-                        .shadow(radius: color == memoColor ? 8 : 0)
-                    }
-                }
-            }
             Divider().padding()
             TextField("메모를 입력하세요", text: $memoText, axis: .vertical)
                 .padding()
-                .foregroundStyle(.white)
-                .background(memoColor)
-                .shadow(radius: 3)
+                .foregroundStyle(.black)
         }
     }
 }
 
+#Preview {
+    ContentView()
+}
