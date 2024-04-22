@@ -12,10 +12,10 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query var memos: [Memo]
     
-    @State private var memoText: String = ""
-    @State private var memoTitle: String = ""
-    @State private var memoColor: Color = .blue
-    
+    @State var memoText: String = ""
+    @State var memoTitle: String = ""
+    @State var memoColor: Color = .blue
+
     let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
     
     var body: some View {
@@ -27,7 +27,6 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                 } else {
                     List(memos) { memo in
-
                         HStack {
                             NavigationLink(destination: MemoDetailView(memo: memo)) {
                                 VStack(alignment: .leading, spacing: 10) {
@@ -46,8 +45,8 @@ struct ContentView: View {
                                         .font(.caption)
                                         .foregroundColor(.white.opacity(0.7))
                                 }
-                                Spacer()
                             }
+                            Spacer()
                         }
                         .padding()
                         .background(memo.color)
@@ -70,6 +69,10 @@ struct ContentView: View {
                     NavigationLink(destination: AddMemoView(memoTitle: $memoTitle, memoText: $memoText, memoColor: $memoColor, colors: colors)) {
                         Image(systemName: "square.and.pencil")
                     }
+                    .simultaneousGesture(TapGesture().onEnded({
+                        memoTitle = ""
+                        memoText = ""
+                    }))
                 }
             }
         }

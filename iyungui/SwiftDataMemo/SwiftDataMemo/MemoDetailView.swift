@@ -16,12 +16,10 @@ struct MemoDetailView: View {
                 Text(memo.title)
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color.white)
                     .padding([.horizontal, .bottom])
 
                 Text(memo.text)
                     .font(.body)
-                    .foregroundStyle(Color.white)
                     .multilineTextAlignment(.leading)
                     .padding(.horizontal)
                 
@@ -31,7 +29,6 @@ struct MemoDetailView: View {
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .background(memo.color)
         .ignoresSafeArea(edges: .bottom)
     }
 }
