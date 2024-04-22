@@ -14,7 +14,6 @@ struct AddMemoView: View {
     @Binding var memoColor: Color
     let colors: [Color]
     
-    @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var modelContext
 
     var body: some View {
@@ -22,7 +21,8 @@ struct AddMemoView: View {
             
             Button(action: {
                 addMemo(title: memoTitle, text: memoText, color: memoColor)
-                self.presentationMode.wrappedValue.dismiss()
+                memoTitle = ""
+                memoText = ""
             }) {
                 Text("완료")
                     .font(.headline)
@@ -82,16 +82,3 @@ struct AddMemoView: View {
 
     }
 }
-
-//#Preview {
-//    AddMemoView()
-//}
-//
-//struct AddMemoView_Previews: PreviewProvider {
-//    @State static var memoTitle: String = ""
-//    @State static var memoText: String = ""
-//    
-//    static var previews: some View {
-//        AddMemoView(memoTitle: $memoTitle, memoText: $memoText)
-//    }
-//}

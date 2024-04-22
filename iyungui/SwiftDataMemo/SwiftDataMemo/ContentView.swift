@@ -12,7 +12,6 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query var memos: [Memo]
     
-    @State private var isShowingSheet: Bool = false
     @State private var memoText: String = ""
     @State private var memoTitle: String = ""
     @State private var memoColor: Color = .blue
@@ -55,17 +54,10 @@ struct ContentView: View {
             .navigationTitle("Memos")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        memoText = ""
-                        memoTitle = ""
-                        isShowingSheet = true
-                    }) {
+                    NavigationLink(destination: AddMemoView(memoTitle: $memoTitle, memoText: $memoText, memoColor: $memoColor, colors: colors)) {
                         Image(systemName: "square.and.pencil")
                     }
                 }
-            }
-            .sheet(isPresented: $isShowingSheet) {
-                AddMemoView(memoTitle: $memoTitle, memoText: $memoText, memoColor: $memoColor, colors: colors)
             }
         }
     }
