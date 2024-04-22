@@ -20,37 +20,50 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(memos) { memo in
-                HStack {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(memo.title)
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        
-                        Text(memo.text)
-                            .font(.subheadline)
-                            .lineLimit(5)
-                        
-                        Text(memo.createdString)
-                            .font(.caption)
+            VStack {
+                if memos.isEmpty {
+                    Text("메모가 없습니다.\n메모를 추가해주세요.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                } else {
+                    List(memos) { memo in
+
+                        HStack {
+                            NavigationLink(destination: MemoDetailView(memo: memo)) {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text(memo.title)
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+
+                                    
+                                    Text(memo.text)
+                                        .font(.subheadline)
+                                        .foregroundColor(.white)
+                                        .lineLimit(5)
+                                    
+                                    Text(memo.createdString)
+                                        .font(.caption)
+                                        .foregroundColor(.white.opacity(0.7))
+                                }
+                                Spacer()
+                            }
+                        }
+                        .padding()
+                        .background(memo.color)
+                        .shadow(radius: 3)
+                        .padding()
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                deleteMemo(memo)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                     }
-                    Spacer()
-                }
-                .padding()
-                .foregroundColor(.white)
-                .background(memo.color)
-                .shadow(radius: 3)
-                .padding()
-                .swipeActions(edge: .trailing) {
-                    Button(role: .destructive) {
-                        deleteMemo(memo)
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                    }
+                    .listStyle(.plain)
                 }
             }
-            .listStyle(.plain)
-            
             .navigationTitle("Memos")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

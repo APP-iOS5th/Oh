@@ -18,8 +18,6 @@ class Memo: Identifiable {
     var colorHex: String
     var createdDate: Date
     
-    @Relationship(inverse: \Tag.memo) var tags: [Tag]?
-
     var createdString: String {
         get {
             let dateFormatter: DateFormatter = DateFormatter()
@@ -38,17 +36,6 @@ class Memo: Identifiable {
         self.text = text
         self.colorHex = colorHex
         self.createdDate = createdDate
-    }
-}
-
-@Model
-final class Tag {
-    var tag: String
-    
-    var memo: Memo?
-    
-    init(tag: String) {
-        self.tag = tag
     }
 }
 
