@@ -12,7 +12,7 @@ import SwiftData
 class Memo {
     var id: UUID
     var text: String
-    var color: Color
+//    var color: Color
     var created: Date
     
     var createdString: String {
@@ -26,7 +26,7 @@ class Memo {
     init(id: UUID, text: String, color: Color, created: Date) {
         self.id = id
         self.text = text
-        self.color = color
+//        self.color = color
         self.created = created
     }
 }

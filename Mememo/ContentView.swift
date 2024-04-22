@@ -45,7 +45,7 @@ struct ContentView: View {
                                 Image(systemName: "trash.slash")
                                 Text("삭제")
                                 
-                            }
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -68,8 +68,8 @@ struct ContentView: View {
 //            }
 //            func addMemo() {
 //                modelContext.insert(Memo(text: ""))
-//            }
+            }
         }
     }
-}
+
 
