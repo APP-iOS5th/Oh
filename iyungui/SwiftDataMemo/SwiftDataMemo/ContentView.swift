@@ -43,13 +43,17 @@ struct ContentView: View {
                     }
                 }
             }
+            .listStyle(.plain)
+            
             .navigationTitle("Memos")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
+                        memoText = ""
+                        memoTitle = ""
                         isShowingSheet = true
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "square.and.pencil")
                     }
                 }
             }
