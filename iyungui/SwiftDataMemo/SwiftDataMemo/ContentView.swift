@@ -15,7 +15,10 @@ struct ContentView: View {
     @State private var isShowingSheet: Bool = false
     @State private var memoText: String = ""
     @State private var memoTitle: String = ""
-
+    @State private var memoColor: Color = .blue
+    
+    let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
+    
     var body: some View {
         NavigationStack {
             List(memos) { memo in
@@ -31,10 +34,14 @@ struct ContentView: View {
                         
                         Text(memo.createdString)
                             .font(.caption)
-                            .foregroundStyle(Color.gray)
                     }
                     Spacer()
                 }
+                .padding()
+                .foregroundColor(.white)
+                .background(memo.color)
+                .shadow(radius: 3)
+                .padding()
                 .swipeActions(edge: .trailing) {
                     Button(role: .destructive) {
                         deleteMemo(memo)
@@ -58,7 +65,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isShowingSheet) {
-                AddMemoView(memoTitle: $memoTitle, memoText: $memoText)
+                AddMemoView(memoTitle: $memoTitle, memoText: $memoText, memoColor: $memoColor, colors: colors)
             }
         }
     }
