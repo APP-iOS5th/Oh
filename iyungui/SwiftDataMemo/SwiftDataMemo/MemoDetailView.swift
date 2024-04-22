@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MemoDetailView: View {
     let memo: Memo
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ScrollView {
@@ -19,11 +18,6 @@ struct MemoDetailView: View {
                     .fontWeight(.bold)
                     .foregroundStyle(Color.white)
                     .padding([.horizontal, .bottom])
-                
-//                Text(memo.createdString)
-//                    .font(.caption)
-//                    .foregroundStyle(Color.white.opacity(0.7))
-//                    .padding([.horizontal, .bottom])
 
                 Text(memo.text)
                     .font(.body)
@@ -39,23 +33,5 @@ struct MemoDetailView: View {
         }
         .background(memo.color)
         .ignoresSafeArea(edges: .bottom)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.left")
-                        .foregroundStyle(Color.white)
-                }
-            }
-        }
     }
 }
-//
-//#Preview {
-//    MemoDetailView(memo: Memo(title: "Title", text: "Text", colorHex: "", createdDate: Date()))
-////}
-//#Preview {
-//    MemoDetailView()
-//}
