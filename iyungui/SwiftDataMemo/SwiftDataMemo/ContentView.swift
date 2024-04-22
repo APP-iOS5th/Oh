@@ -32,6 +32,13 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        deleteMemo(memo)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
             }
             .navigationTitle("Memos")
             .toolbar {
@@ -48,7 +55,9 @@ struct ContentView: View {
             }
         }
     }
-    
+    func deleteMemo(_ memo: Memo) {
+        modelContext.delete(memo)
+    }
 }
 
 #Preview {
