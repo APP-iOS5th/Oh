@@ -17,9 +17,17 @@ struct AddMemoView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
+    enum Field: Hashable {
+        case memoTitle
+        case memoText
+    }
+    
+    @FocusState private var focusedField: Field?
+    @FocusState private var IsFocused: Bool
+
+    
     var body: some View {
         VStack {
-            
             HStack {
                 ForEach(colors, id: \.self) { color in
                     Button { memoColor = color } label: {
@@ -40,13 +48,25 @@ struct AddMemoView: View {
             TextField("", text: $memoTitle)
                 .font(.title)
                 .padding(8)
+                .focused($focusedField, equals: .memoTitle)
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .memoText
+                }
 
             TextEditor(text: $memoText)
                 .font(.body)
                 .padding(8)
+                .focused($focusedField, equals: .memoText)
             
             Spacer()
 
+        }
+        .onAppear {
+            focusedField = .memoTitle
+        }
+        .onTapGesture {
+            focusedField = nil
         }
         .padding()
         .navigationTitle("New Memo")
