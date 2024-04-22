@@ -12,25 +12,34 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query var memos: [Memo]
     
-    @State private var memoText: String = "new memo"
+    @State private var isShowingSheet: Bool = false
+    @State private var memoText: String = ""
     @State private var memoTitle: String = ""
 
     var body: some View {
         NavigationStack {
             List(memos) { memo in
                 HStack {
-                    Text(memo.title)
+                    VStack {
+                        Text(memo.title)
+                            .font(.headline)
+                        Text(memo.text)
+                    }
+=
                 }
             }
             .navigationTitle("Memos")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        addMemo(title: memoTitle, text: memoText)
+                        isShowingSheet = true
                     }) {
                         Image(systemName: "plus")
                     }
                 }
+            }
+            .sheet(isPresented: $isShowingSheet) {
+                AddMemoView(memoTitle: $memoTitle, memoText: $memoText)
             }
         }
     }
