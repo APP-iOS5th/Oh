@@ -15,23 +15,10 @@ struct AddMemoView: View {
     let colors: [Color]
     
     @Environment(\.modelContext) var modelContext
-
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         VStack {
-            
-            Button(action: {
-                addMemo(title: memoTitle, text: memoText, color: memoColor)
-                memoTitle = ""
-                memoText = ""
-            }) {
-                Text("완료")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(6)
-            }
             
             HStack {
                 ForEach(colors, id: \.self) { color in
@@ -50,28 +37,29 @@ struct AddMemoView: View {
             
             Divider().padding()
             
-            TextField("", text: $memoTitle, prompt: Text("제목을 입력해주세요!").font(.headline).foregroundStyle(Color.gray))
-                .padding(.vertical)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("", text: $memoTitle)
+                .font(.title)
+                .padding(8)
+
+            TextEditor(text: $memoText)
+                .font(.body)
+                .padding(8)
             
-            
-            ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
-                TextEditor(text: $memoText)
-                    .font(.body)
-                    .padding(8)
-                    .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.secondary.opacity(0.2), lineWidth: 1))
-                    .frame(minHeight: 150)
-                if memoText.isEmpty {
-                    Text("메모를 입력해주세요.")
-                        .foregroundColor(.gray)
-                        .padding([.leading, .top], 20)
-                        .allowsHitTesting(false)
-                }
-            }
             Spacer()
 
         }
         .padding()
+        .navigationTitle("New Memo")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Done") {
+                    addMemo(title: memoTitle, text: memoText, color: memoColor)
+                    dismiss()
+                }
+                .disabled(memoText.isEmpty)
+            }
+        }
     }
     func addMemo(title: String, text: String, color: Color) {
         if let rgba = color.rgba() {
