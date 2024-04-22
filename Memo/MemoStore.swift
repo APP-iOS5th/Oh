@@ -33,7 +33,6 @@ class Memo {
     }
 }
 
-
 //// 메모들을 저장하고 관리하는 클래스
 //class MemoStore: ObservableObject {
 //    @Published var memos: [Memo] = []  // 메모 배열, 변경사항을 관찰하도록 설정
