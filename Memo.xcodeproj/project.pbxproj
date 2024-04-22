@@ -11,6 +11,8 @@
 		B84E24E52BD63185006EBF0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E24E42BD63185006EBF0D /* ContentView.swift */; };
 		B84E24E72BD63187006EBF0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84E24E62BD63187006EBF0D /* Assets.xcassets */; };
 		B84E24EB2BD63187006EBF0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84E24EA2BD63187006EBF0D /* Preview Assets.xcassets */; };
+		B84E24FA2BD64098006EBF0D /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E24F92BD64098006EBF0D /* MemoAddView.swift */; };
+		B84E24FC2BD643EF006EBF0D /* MemoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E24FB2BD643EF006EBF0D /* MemoStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		B84E24E62BD63187006EBF0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B84E24E82BD63187006EBF0D /* Memo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memo.entitlements; sourceTree = "<group>"; };
 		B84E24EA2BD63187006EBF0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B84E24F92BD64098006EBF0D /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
+		B84E24FB2BD643EF006EBF0D /* MemoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				B84E24E22BD63185006EBF0D /* MemoApp.swift */,
 				B84E24E42BD63185006EBF0D /* ContentView.swift */,
+				B84E24FB2BD643EF006EBF0D /* MemoStore.swift */,
+				B84E24F92BD64098006EBF0D /* MemoAddView.swift */,
 				B84E24E62BD63187006EBF0D /* Assets.xcassets */,
 				B84E24E82BD63187006EBF0D /* Memo.entitlements */,
 				B84E24E92BD63187006EBF0D /* Preview Content */,
@@ -140,6 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84E24E52BD63185006EBF0D /* ContentView.swift in Sources */,
+				B84E24FA2BD64098006EBF0D /* MemoAddView.swift in Sources */,
+				B84E24FC2BD643EF006EBF0D /* MemoStore.swift in Sources */,
 				B84E24E32BD63185006EBF0D /* MemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

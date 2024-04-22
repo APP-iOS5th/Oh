@@ -12,6 +12,9 @@ struct MemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: Memo.self)
         }
     }
 }
+
+//            ContentView(memoStore: MemoStore())
