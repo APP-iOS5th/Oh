@@ -12,6 +12,7 @@
 		4B2CB3722BD634D90077557F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CB3712BD634D90077557F /* Assets.xcassets */; };
 		4B2CB3752BD634D90077557F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CB3742BD634D90077557F /* Preview Assets.xcassets */; };
 		4B2CB37E2BD635F60077557F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2CB37D2BD635F60077557F /* Model.swift */; };
+		4B2CB3802BD63B4F0077557F /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2CB37F2BD63B4F0077557F /* MemoAddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		4B2CB3712BD634D90077557F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B2CB3742BD634D90077557F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4B2CB37D2BD635F60077557F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4B2CB37F2BD63B4F0077557F /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				4B2CB36D2BD634D80077557F /* memoApp.swift */,
 				4B2CB36F2BD634D80077557F /* ContentView.swift */,
 				4B2CB37D2BD635F60077557F /* Model.swift */,
+				4B2CB37F2BD63B4F0077557F /* MemoAddView.swift */,
 				4B2CB3712BD634D90077557F /* Assets.xcassets */,
 				4B2CB3732BD634D90077557F /* Preview Content */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				4B2CB37E2BD635F60077557F /* Model.swift in Sources */,
 				4B2CB3702BD634D80077557F /* ContentView.swift in Sources */,
+				4B2CB3802BD63B4F0077557F /* MemoAddView.swift in Sources */,
 				4B2CB36E2BD634D80077557F /* memoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
