@@ -7,9 +7,12 @@
 
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @ObservedObject var memoStore: MemoStore = MemoStore()
+//    @ObservedObject var memoStore: MemoStore = MemoStore()
+    @Query var memos: [Memo]
+    @Environment(\.modelContext) var modelContext
     
     @State var isSheetShowing: Bool = false
     @State var memoText: String = ""
@@ -17,7 +20,7 @@ struct ContentView: View {
     let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
     var body: some View {
         NavigationStack {
-            List(memoStore.memos) { memo in
+            List(memos) { memo in
                 HStack {
                     VStack(alignment: .leading) {
                         Text("\(memo.text)").font(.title)
@@ -27,13 +30,13 @@ struct ContentView: View {
                 }
                 .padding()
                 .foregroundStyle(.white)
-                .background(memo.color)
                 .shadow(radius: 3)
                 .padding()
+                .background(.black)
                 .contextMenu{
                     ShareLink(item: memo.text)
                     Button{
-                        memoStore.removeMemo(memo)
+                        modelContext.delete(memo)
                     } label: {
                         Image(systemName: "trash.slash")
                         Text("삭제")
@@ -49,7 +52,7 @@ struct ContentView: View {
                     }
                 }
             }.sheet(isPresented: $isSheetShowing) {
-                MemoAddView(memoStore: memoStore, isSheetShowing:$isSheetShowing, memoText: $memoText, memoColor: $memoColor, colors: colors)
+                MemoAddView( isSheetShowing:$isSheetShowing, memoText: $memoText, memoColor: $memoColor, colors: colors)
             }
         }
     }

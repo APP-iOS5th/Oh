@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MemoAddView: View {
-    var memoStore: MemoStore
+    @Environment(\.modelContext) var modelContext
     @Binding var isSheetShowing: Bool
     @Binding var memoText: String
     @Binding var memoColor: Color
@@ -22,7 +22,8 @@ struct MemoAddView: View {
                 }
                 Spacer()
                 Button("완료"){
-                    memoStore.addMemo(memoText, color: memoColor)
+//                    memoStore.addMemo(memoText)
+                    modelContext.insert(Memo(text: memoText, created: Date()))
                     isSheetShowing = false
                 }.disabled(memoText.isEmpty)
             }
