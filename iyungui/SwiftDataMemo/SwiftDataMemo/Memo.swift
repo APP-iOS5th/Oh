@@ -14,6 +14,7 @@ class Memo: Identifiable {
     let id: UUID
     var title: String
     var text: String
+//    var colorHex: String
     var createdDate: Date
     
     @Relationship(inverse: \Tag.memo) var tags: [Tag]?
@@ -21,11 +22,14 @@ class Memo: Identifiable {
     var createdString: String {
         get {
             let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
             return dateFormatter.string(from: createdDate)
         }
     }
     
+//    var color: Color {
+//        Color(hex: colorHex)
+//    }
     
     init(id: UUID = UUID(), title: String, text: String, createdDate: Date) {
         self.id = id
@@ -46,3 +50,16 @@ final class Tag {
     }
 }
 
+//extension Color {
+//    init(hex: String) {
+//        let scanner = Scanner(string: hex)
+//        var rgbValue: UInt64 = 0
+//        scanner.scanHexInt64(&rgbValue)
+//        
+//        let r = Double((rgbValue & 0xFF0000) >> 16) / 255.0
+//        let g = Double((rgbValue & 0x00FF00) >> 8) / 255.0
+//        let b = Double(rgbValue & 0x0000FF) / 255.0
+//        
+//        self.init(red: r, green: g, blue: b)
+//    }
+//}

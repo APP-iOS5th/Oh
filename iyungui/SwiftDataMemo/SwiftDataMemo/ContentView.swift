@@ -20,12 +20,17 @@ struct ContentView: View {
         NavigationStack {
             List(memos) { memo in
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading, spacing: 10) {
                         Text(memo.title)
-                            .font(.headline)
+                            .font(.title3)
+                            .fontWeight(.bold)
                         Text(memo.text)
+                            .font(.subheadline)
+                        Text(memo.createdString)
+                            .font(.caption)
+                            .foregroundStyle(Color.gray)
                     }
-=
+                    Spacer()
                 }
             }
             .navigationTitle("Memos")
@@ -44,10 +49,6 @@ struct ContentView: View {
         }
     }
     
-    func addMemo(title: String, text: String) {
-        let newMemo = Memo(title: title, text: text, createdDate: Date())
-        modelContext.insert(newMemo)
-    }
 }
 
 #Preview {
