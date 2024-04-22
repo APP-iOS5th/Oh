@@ -89,7 +89,7 @@ struct ContentView: View {
                 .shadow(radius: 3)
                 .padding()
                 .contextMenu {
-//                    ShareLink(item: memo.text)
+                    ShareLink(item: memo.text)
                     Button { removeMemo(memo) } label: {
                         Image(systemName: "trash.slash")
                         Text("삭제")
