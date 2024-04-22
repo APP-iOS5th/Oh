@@ -29,10 +29,14 @@ struct MemoAddView: View {
                     isSheetShowing = false
                 }.disabled(memoText.isEmpty)
             }
+            .padding(20)
             Divider().padding()
             TextField("메모를 입력하세요", text: $memoText, axis: .vertical)
                 .padding()
                 .foregroundStyle(.black)
+            Spacer()
+            Spacer()
+            Spacer()
         }
     }
 }
