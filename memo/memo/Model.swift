@@ -25,4 +25,15 @@ struct Memo: Identifiable {
 
 class MemoStore:ObservableObject {
     @Published var memos: [Memo] = []
+    
+    func addMemo(_ text: String, color: Color) {
+        let memo: Memo = Memo(text: text, color: color, created: Date())
+        memos.insert(memo, at: 0)
+    }
+    
+    func removeMemo(_ targetMemo: Memo) {
+        if let index = memos.firstIndex(where: { $0.id == targetMemo.id }) {
+            memos.remove(at:  index)
+        }
+    }
 }
