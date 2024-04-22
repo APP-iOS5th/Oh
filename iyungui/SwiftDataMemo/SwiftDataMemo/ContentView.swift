@@ -24,8 +24,11 @@ struct ContentView: View {
                         Text(memo.title)
                             .font(.title3)
                             .fontWeight(.bold)
+                        
                         Text(memo.text)
                             .font(.subheadline)
+                            .lineLimit(5)
+                        
                         Text(memo.createdString)
                             .font(.caption)
                             .foregroundStyle(Color.gray)
