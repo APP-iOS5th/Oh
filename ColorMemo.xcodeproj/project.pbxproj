@@ -11,6 +11,7 @@
 		B84E250C2BD7387B006EBF0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E250B2BD7387B006EBF0D /* ContentView.swift */; };
 		B84E250E2BD7387E006EBF0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84E250D2BD7387E006EBF0D /* Assets.xcassets */; };
 		B84E25122BD7387E006EBF0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84E25112BD7387E006EBF0D /* Preview Assets.xcassets */; };
+		B84E25192BD73A52006EBF0D /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E25182BD73A52006EBF0D /* Memo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B84E250D2BD7387E006EBF0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B84E250F2BD7387E006EBF0D /* ColorMemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ColorMemo.entitlements; sourceTree = "<group>"; };
 		B84E25112BD7387E006EBF0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B84E25182BD73A52006EBF0D /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				B84E25092BD7387B006EBF0D /* ColorMemoApp.swift */,
 				B84E250B2BD7387B006EBF0D /* ContentView.swift */,
+				B84E25182BD73A52006EBF0D /* Memo.swift */,
 				B84E250D2BD7387E006EBF0D /* Assets.xcassets */,
 				B84E250F2BD7387E006EBF0D /* ColorMemo.entitlements */,
 				B84E25102BD7387E006EBF0D /* Preview Content */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B84E25192BD73A52006EBF0D /* Memo.swift in Sources */,
 				B84E250C2BD7387B006EBF0D /* ContentView.swift in Sources */,
 				B84E250A2BD7387B006EBF0D /* ColorMemoApp.swift in Sources */,
 			);
