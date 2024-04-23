@@ -10,7 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var memos: [Memo]
+    @Query(sort: [SortDescriptor(\Memo.createdDate, order: .forward)]) var memos: [Memo]
     
     var body: some View {
         NavigationStack {
