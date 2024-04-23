@@ -11,7 +11,7 @@ import SwiftUI
 import UIKit
 
 @Model
-class Memo: Identifiable {
+class Memo {
     let id: UUID
     var title: String
     var text: String
