@@ -29,6 +29,8 @@ struct AddMemoView: View {
     
     var body: some View {
         VStack {
+            ColorPicker("Custom Color", selection: $memoColor).padding()
+            
             HStack {
                 ForEach(colors, id: \.self) { color in
                     Button { memoColor = color } label: {
@@ -46,7 +48,7 @@ struct AddMemoView: View {
             
             Divider().padding()
             
-            TextField("", text: $memoTitle)
+            TextField("Title", text: $memoTitle)
                 .font(.title)
                 .background(memoColor)
                 .shadow(radius: 3)
