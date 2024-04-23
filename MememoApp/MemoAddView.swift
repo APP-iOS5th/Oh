@@ -11,8 +11,8 @@ struct MemoAddView: View {
     var memos: [Memo]
     @Environment(\.modelContext) var modelContext
     @Binding var isSheetShowing: Bool
-    @Binding var memoText: String
-    @Binding var memoColor: Color
+    @State var memoText: String = ""
+    @State var memoColor: Color = .blue
     let colors: [Color]
     
     var body: some View {
@@ -21,7 +21,7 @@ struct MemoAddView: View {
                 Button("취소") { isSheetShowing = false}
                 Spacer()
                 Button("완료") {
-                    let newMemo = Memo(text: memoText, created: Date())
+                    let newMemo = Memo(text: memoText, color: memoColor, created: Date())
                     modelContext.insert(newMemo)
                     isSheetShowing = false
                 }
