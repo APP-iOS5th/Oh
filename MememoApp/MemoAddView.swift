@@ -24,7 +24,7 @@ struct MemoAddView: View {
                 Button("완료") {
                     if let memo = memoValue {
                         memo.text = memoText
-                        memo.colorHex = hexStringFromColor(color: memoColor)
+                        memo.colorHex = Memo.hexStringFromColor(color: memoColor)
                     } else {
                         let newMemo = Memo(text: memoText, color: memoColor, created: memoCreated)
                         modelContext.insert(newMemo)
@@ -63,14 +63,5 @@ struct MemoAddView: View {
             Spacer()
         }
         .padding()
-    }
-    func hexStringFromColor(color: Color) -> String {
-        let components = color.resolve(in: EnvironmentValues())
-        let r: CGFloat = CGFloat(components.red)
-        let g: CGFloat = CGFloat(components.green)
-        let b: CGFloat = CGFloat(components.blue)
-        
-        let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r*255)), lroundf(Float(g*255)), lroundf(Float(b*255)))
-        return hexString
     }
 }
