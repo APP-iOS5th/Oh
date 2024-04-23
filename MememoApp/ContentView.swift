@@ -12,6 +12,11 @@ struct ContentView: View {
     @Query var memos: [Memo]
     @Environment(\.modelContext) var modelContext
     @State var isSheetShowing: Bool = false
+    @State var memoText: String = ""
+    @State var memoColor: Color = .blue
+    @State var memoCreated: Date = Date()
+    @State var memoValue: Memo? = nil
+    
     let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
     
     var body: some View {
@@ -40,6 +45,16 @@ struct ContentView: View {
                         Image(systemName: "trash")
                         Text("삭제")
                     }
+                    Button {
+                        memoText = memo.text
+                        memoColor = memo.color
+                        memoCreated = memo.created
+                        memoValue = memo
+                        isSheetShowing = true
+                    } label: {
+                        Image(systemName: "pencil")
+                        Text("수정")
+                    }
                 }
             }
             .listStyle(.plain)
@@ -47,11 +62,16 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("추가") {
-                        isSheetShowing = true }
+                        memoText = ""
+                        memoColor = .blue
+                        memoCreated = Date()
+                        memoValue = nil
+                        isSheetShowing = true
+                    }
                 }
             }
             .sheet(isPresented: $isSheetShowing) {
-                MemoAddView(memos: memos, isSheetShowing: $isSheetShowing, colors: colors)
+                MemoAddView(memoValue: memoValue, isSheetShowing: $isSheetShowing, memoText: $memoText, memoColor: $memoColor, memoCreated: $memoCreated, colors: colors)
             }
         }
     }

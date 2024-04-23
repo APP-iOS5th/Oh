@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct MemoAddView: View {
-    var memos: [Memo]
+    var memoValue: Memo?
     @Environment(\.modelContext) var modelContext
     @Binding var isSheetShowing: Bool
-    @State var memoText: String = ""
-    @State var memoColor: Color = .blue
+    @Binding var memoText: String
+    @Binding var memoColor: Color
+    @Binding var memoCreated: Date
     let colors: [Color]
     
     var body: some View {
@@ -21,8 +22,13 @@ struct MemoAddView: View {
                 Button("취소") { isSheetShowing = false}
                 Spacer()
                 Button("완료") {
-                    let newMemo = Memo(text: memoText, color: memoColor, created: Date())
-                    modelContext.insert(newMemo)
+                    if let memo = memoValue {
+                        memo.text = memoText
+                        memo.colorHex = hexStringFromColor(color: memoColor)
+                    } else {
+                        let newMemo = Memo(text: memoText, color: memoColor, created: memoCreated)
+                        modelContext.insert(newMemo)
+                    }
                     isSheetShowing = false
                 }
                 .disabled(memoText.isEmpty)
@@ -57,5 +63,14 @@ struct MemoAddView: View {
             Spacer()
         }
         .padding()
+    }
+    func hexStringFromColor(color: Color) -> String {
+        let components = color.resolve(in: EnvironmentValues())
+        let r: CGFloat = CGFloat(components.red)
+        let g: CGFloat = CGFloat(components.green)
+        let b: CGFloat = CGFloat(components.blue)
+        
+        let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r*255)), lroundf(Float(g*255)), lroundf(Float(b*255)))
+        return hexString
     }
 }
