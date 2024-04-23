@@ -72,7 +72,9 @@ struct ContentView: View {
                 .padding()
                 .contextMenu {
                     ShareLink(item: memo.text)
-                    Button { removeMemo(memo) } label: {
+                    Button {
+                        modelContext.delete(memo)
+                    } label: {
                         Image(systemName: "trash")
                         Text("삭제")
                     }
@@ -90,26 +92,23 @@ struct ContentView: View {
             }
         }
     }
-    func removeMemo(_ targetMemo: Memo) {
-            modelContext.delete(targetMemo)
-    }
 }
 
 // Preview Contents/previewContainer.swift
-@MainActor
-let previewContainer: ModelContainer = {
-    do {
-        let container = try ModelContainer(
-            for: Memo.self,
-            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-        )
-        return container
-    } catch {
-        fatalError()
-    }
-}()
+//@MainActor
+//let previewContainer: ModelContainer = {
+//    do {
+//        let container = try ModelContainer(
+//            for: Memo.self,
+//            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+//        )
+//        return container
+//    } catch {
+//        fatalError()
+//    }
+//}()
 
 #Preview {
     ContentView()
-        .modelContainer(previewContainer)
+        .modelContainer(for: Memo.self)
 }
