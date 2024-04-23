@@ -13,7 +13,6 @@ class Memo: Identifiable {
     var id: UUID
     var text: String
 //    var colorHex: String
-//    var color: Color
     var created: Date
     
     var createdString: String {
@@ -27,14 +26,10 @@ class Memo: Identifiable {
     init(id: UUID = UUID(), text: String, created: Date) {
         self.id = id
         self.text = text
-//        self.colorHex = colorHex
-//        self.color = color
         self.created = created
     }
-//    var color: Color {
-//        Color(hex: colorHex)
-//    }
 }
+
 //extension Color {
 //    init(hex: String) {
 //        let scanner = Scanner(string: hex)
@@ -45,19 +40,6 @@ class Memo: Identifiable {
 //        let g = Double((rgbValue & 0x00FF00) >> 8) / 255.0
 //        let b = Double(rgbValue & 0x0000FF) / 255.0
 //        self.init(red: r, green: g, blue: b)
-//    }
-//}
-
-//class MemoStore: ObservableObject {
-//    @Published var memos: [Memo] = []
-//    func addMemo(_ text: String, color: Color) {
-//        let memo: Memo = Memo(text: text, color: color, created: Date())
-//        memos.insert(memo, at: 0)
-//    }
-//    func removeMemo(_ targetMemo: Memo) {
-//        if let index = memos.firstIndex(where: { $0.id == targetMemo.id }) {
-//            memos.remove(at: index)
-//        }
 //    }
 //}
 
@@ -85,13 +67,13 @@ struct ContentView: View {
                 }
                 .padding()
                 .foregroundColor(.white)
-//                .background(memo.color)
+                .background(Color.blue)
                 .shadow(radius: 3)
                 .padding()
                 .contextMenu {
                     ShareLink(item: memo.text)
                     Button { removeMemo(memo) } label: {
-                        Image(systemName: "trash.slash")
+                        Image(systemName: "trash")
                         Text("삭제")
                     }
                 }
@@ -104,7 +86,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isSheetShowing) {
-                MemoAddView(memos: memos, isSheetShowing: $isSheetShowing, memoText: $memoText, colors: colors)
+                MemoAddView(memos: memos, isSheetShowing: $isSheetShowing, memoText: $memoText, memoColor: $memoColor, colors: colors)
             }
         }
     }
