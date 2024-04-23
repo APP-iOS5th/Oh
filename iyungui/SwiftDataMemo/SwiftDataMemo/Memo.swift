@@ -21,7 +21,7 @@ class Memo: Identifiable {
     var createdString: String {
         get {
             let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH:mm"
+            dateFormatter.dateFormat = "yyyy MM dd" // ISO 8601 standard
             return dateFormatter.string(from: createdDate)
         }
     }
