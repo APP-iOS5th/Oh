@@ -9,10 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct AddMemoView: View {
-    @Binding var memoTitle: String
-    @Binding var memoText: String
-    @Binding var memoColor: Color
-    let colors: [Color]
+    @State var memoText: String = ""
+    @State var memoTitle: String = ""
+    @State var memoColor: Color = .blue
+
+    let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
     
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -47,6 +48,8 @@ struct AddMemoView: View {
             
             TextField("", text: $memoTitle)
                 .font(.title)
+                .background(memoColor)
+                .shadow(radius: 3)
                 .padding(8)
                 .focused($focusedField, equals: .memoTitle)
                 .submitLabel(.next)
@@ -87,6 +90,5 @@ struct AddMemoView: View {
             let newMemo = Memo(title: title, text: text, colorHex: hexString, createdDate: Date())
             modelContext.insert(newMemo)
         }
-
     }
 }

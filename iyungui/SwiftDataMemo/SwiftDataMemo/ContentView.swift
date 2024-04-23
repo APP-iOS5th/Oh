@@ -12,12 +12,6 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query var memos: [Memo]
     
-    @State var memoText: String = ""
-    @State var memoTitle: String = ""
-    @State var memoColor: Color = .blue
-
-    let colors: [Color] = [.blue, .cyan, .purple, .yellow, .indigo]
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -54,7 +48,7 @@ struct ContentView: View {
                         .padding()
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
-                                deleteMemo(memo)
+                                modelContext.delete(memo)
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
@@ -66,19 +60,16 @@ struct ContentView: View {
             .navigationTitle("Memos")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(destination: AddMemoView(memoTitle: $memoTitle, memoText: $memoText, memoColor: $memoColor, colors: colors)) {
+                    NavigationLink(destination: AddMemoView()) {
                         Image(systemName: "square.and.pencil")
                     }
-                    .simultaneousGesture(TapGesture().onEnded({
-                        memoTitle = ""
-                        memoText = ""
-                    }))
+//                    .simultaneousGesture(TapGesture().onEnded({
+//                        memoTitle = ""
+//                        memoText = ""
+//                    }))
                 }
             }
         }
-    }
-    func deleteMemo(_ memo: Memo) {
-        modelContext.delete(memo)
     }
 }
 
