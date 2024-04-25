@@ -55,7 +55,7 @@ struct ContentView: View {
                 Image(systemName: "star").tag(Priority.low)
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding([.horizontal, .top])
+            .padding()
             
             TextField("New Task", text: $newTodoText)
                 .padding()
@@ -64,15 +64,16 @@ struct ContentView: View {
                 addTodo(text: newTodoText, priority: newPriority)
                 newTodoText = ""
             }) {
-                Text("추가")
-                    .font(.title)
+                Text("A D D")
+                    .font(.title3)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.blue)
                     .cornerRadius(10)
-                    .padding(.horizontal)
+                    .padding()
+                    .disabled(newTodoText.isEmpty)
             }
             
         }
