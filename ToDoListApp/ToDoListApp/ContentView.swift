@@ -42,29 +42,22 @@ struct ContentView: View {
                 .background(.blue)
             }
             .padding()
-            List {
-                ForEach(tasks){task in
-                    Button {
-//                        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
-//                                    tasks[index].completed.toggle()
-//                                }
-                    } label: {
-                        Label {
-                            Text(task.taskDescription)
-                                .tint(.black)
-                                .modifier(StrikethroughModifier(strikethrough: task.completed))
-                        } icon: {
-                            task.completed ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
-                        }
+            List(tasks) { task in
+                Button {
+                    task.completed.toggle()
+                } label: {
+                    Label {
+                        Text(task.taskDescription)
+                            .tint(.black)
+                            .modifier(StrikethroughModifier(strikethrough: task.completed))
+                    } icon: {
+                        task.completed ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
                     }
                 }
-                .onDelete(perform: { indexSet in
-//                    tasks.remove(atOffsets: indexSet)
-                })
                 .padding()
                 .contextMenu {
                     Button {
-//                        modelContext.delete(task)
+                        modelContext.delete(task)
                     } label: {
                         Image(systemName: "trash")
                         Text("delete")
