@@ -85,6 +85,11 @@ struct ContentView: View {
                 
                 TextField("New Task", text: $newTodoText)
                     .padding()
+                    .submitLabel(.done)
+                    .onSubmit {
+                        addTodo(text: newTodoText, priority: newPriority)
+                        newTodoText = ""
+                    }
                 
                 Button(action: {
                     addTodo(text: newTodoText, priority: newPriority)
@@ -93,6 +98,7 @@ struct ContentView: View {
                     Text("A D D")
                         .font(.title3)
                         .disabled(newTodoText.isEmpty)
+                        .padding()
                 }
                 
             }
