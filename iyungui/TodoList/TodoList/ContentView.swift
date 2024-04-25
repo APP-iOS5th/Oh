@@ -29,34 +29,25 @@ struct ContentView: View {
                                     .imageScale(.large)
                             }
                             Text("\(task.content)")
+                                .multilineTextAlignment(.leading)
+                            
+                            Spacer()
                             
                             Image(systemName: task.priority.imageName)
                         }
                         .padding(.vertical, 8)
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                modelContext.delete(task)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                     }
                 }
                 Spacer()
             }
             .navigationTitle("To do List")
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: {
-                        addTodo(text: newTodoText, priority: newPriority)
-                        newTodoText = ""
-                    }) {
-                        Text("추가")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                    }
-                }
-            }
-            
-            Divider()
             
             Picker("우선순위", selection: $newPriority) {
                 Image(systemName: "star.fill").tag(Priority.high)
@@ -64,9 +55,26 @@ struct ContentView: View {
                 Image(systemName: "star").tag(Priority.low)
             }
             .pickerStyle(SegmentedPickerStyle())
+            .padding([.horizontal, .top])
             
             TextField("New Task", text: $newTodoText)
                 .padding()
+            
+            Button(action: {
+                addTodo(text: newTodoText, priority: newPriority)
+                newTodoText = ""
+            }) {
+                Text("추가")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+            }
+            
         }
     }
     func addTodo(text: String, priority: Priority) {
