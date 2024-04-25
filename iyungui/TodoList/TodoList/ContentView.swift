@@ -4,6 +4,11 @@
 //
 //  Created by 이융의 on 4/25/24.
 //
+/*
+ 1. sort
+ 2. editable
+*/
+
 
 import SwiftUI
 import SwiftData
@@ -15,7 +20,7 @@ struct ContentView: View {
     @State private var newPriority: Priority = .medium
     
     @Query var tasks: [Task]
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -28,12 +33,19 @@ struct ContentView: View {
                                 Image(systemName: task.completed ? "circle.inset.filled" : "circle")
                                     .imageScale(.large)
                             }
+                            .buttonStyle(.plain)
+                            
+                            Divider()
+                            
                             Text("\(task.content)")
+                                .foregroundStyle(task.completed ? .secondary : .primary)
                                 .multilineTextAlignment(.leading)
                             
                             Spacer()
                             
                             Image(systemName: task.priority.imageName)
+                                .foregroundStyle(task.completed ? .secondary : .primary)
+
                         }
                         .padding(.vertical, 8)
                         .swipeActions(edge: .trailing) {
@@ -47,7 +59,7 @@ struct ContentView: View {
                 }
                 Spacer()
                 
-                Picker("우선순위", selection: $newPriority) {
+                Picker("", selection: $newPriority) {
                     Image(systemName: "star.fill").tag(Priority.high)
                     Image(systemName: "star.fill.left").tag(Priority.medium)
                     Image(systemName: "star").tag(Priority.low)
@@ -64,26 +76,16 @@ struct ContentView: View {
                 }) {
                     Text("A D D")
                         .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .padding()
                         .disabled(newTodoText.isEmpty)
                 }
                 
             }
             .navigationTitle("To do List")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    EditButton()
-                }
-            }
-            
-
-            
+//            .toolbar {
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    EditButton()
+//                }
+//            }
         }
     }
     func addTodo(text: String, priority: Priority) {
