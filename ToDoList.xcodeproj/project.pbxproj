@@ -11,7 +11,8 @@
 		B84E27392BDA148C006EBF0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E27382BDA148C006EBF0D /* ContentView.swift */; };
 		B84E273B2BDA148D006EBF0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84E273A2BDA148D006EBF0D /* Assets.xcassets */; };
 		B84E273E2BDA148D006EBF0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84E273D2BDA148D006EBF0D /* Preview Assets.xcassets */; };
-		B84E27452BDA14AD006EBF0D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E27442BDA14AD006EBF0D /* Task.swift */; };
+		B84E27682BDA1F26006EBF0D /* exampleTodoListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B84E27662BDA1F26006EBF0D /* exampleTodoListModel.xcdatamodeld */; };
+		B84E276B2BDA204B006EBF0D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E276A2BDA204B006EBF0D /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +21,8 @@
 		B84E27382BDA148C006EBF0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B84E273A2BDA148D006EBF0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B84E273D2BDA148D006EBF0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B84E27442BDA14AD006EBF0D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B84E27672BDA1F26006EBF0D /* exampleTodoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = exampleTodoList.xcdatamodel; sourceTree = "<group>"; };
+		B84E276A2BDA204B006EBF0D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +55,9 @@
 		B84E27352BDA148C006EBF0D /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				B84E27692BDA2013006EBF0D /* Managers */,
 				B84E27362BDA148C006EBF0D /* ToDoListApp.swift */,
 				B84E27382BDA148C006EBF0D /* ContentView.swift */,
-				B84E27442BDA14AD006EBF0D /* Task.swift */,
 				B84E273A2BDA148D006EBF0D /* Assets.xcassets */,
 				B84E273C2BDA148D006EBF0D /* Preview Content */,
 			);
@@ -66,8 +68,17 @@
 			isa = PBXGroup;
 			children = (
 				B84E273D2BDA148D006EBF0D /* Preview Assets.xcassets */,
+				B84E27662BDA1F26006EBF0D /* exampleTodoListModel.xcdatamodeld */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B84E27692BDA2013006EBF0D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B84E276A2BDA204B006EBF0D /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84E27392BDA148C006EBF0D /* ContentView.swift in Sources */,
-				B84E27452BDA14AD006EBF0D /* Task.swift in Sources */,
+				B84E27682BDA1F26006EBF0D /* exampleTodoListModel.xcdatamodeld in Sources */,
+				B84E276B2BDA204B006EBF0D /* CoreDataManager.swift in Sources */,
 				B84E27372BDA148C006EBF0D /* ToDoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B84E27662BDA1F26006EBF0D /* exampleTodoListModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B84E27672BDA1F26006EBF0D /* exampleTodoList.xcdatamodel */,
+			);
+			currentVersion = B84E27672BDA1F26006EBF0D /* exampleTodoList.xcdatamodel */;
+			path = exampleTodoListModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B84E272B2BDA148C006EBF0D /* Project object */;
 }

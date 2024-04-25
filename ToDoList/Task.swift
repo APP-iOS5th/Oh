@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Priority : Comparable{
+enum Priority : Comparable, Codable{
     case high
     case medium
     case low
