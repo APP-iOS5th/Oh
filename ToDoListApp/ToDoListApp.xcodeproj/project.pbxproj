@@ -12,6 +12,8 @@
 		1546A01C2BDA0D760016C34C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1546A01B2BDA0D760016C34C /* Assets.xcassets */; };
 		1546A01F2BDA0D760016C34C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1546A01E2BDA0D760016C34C /* Preview Assets.xcassets */; };
 		1546A0262BDA0DE90016C34C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546A0252BDA0DE90016C34C /* Task.swift */; };
+		1546A02A2BDA39BA0016C34C /* EditingTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546A0292BDA39BA0016C34C /* EditingTaskView.swift */; };
+		1546A0302BDA455D0016C34C /* StrikethroughModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546A02F2BDA455D0016C34C /* StrikethroughModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		1546A01B2BDA0D760016C34C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1546A01E2BDA0D760016C34C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1546A0252BDA0DE90016C34C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		1546A0292BDA39BA0016C34C /* EditingTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTaskView.swift; sourceTree = "<group>"; };
+		1546A02F2BDA455D0016C34C /* StrikethroughModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikethroughModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				1546A0172BDA0D720016C34C /* ToDoListAppApp.swift */,
+				1546A02F2BDA455D0016C34C /* StrikethroughModifier.swift */,
+				1546A0292BDA39BA0016C34C /* EditingTaskView.swift */,
 				1546A0192BDA0D720016C34C /* ContentView.swift */,
 				1546A0252BDA0DE90016C34C /* Task.swift */,
 				1546A01B2BDA0D760016C34C /* Assets.xcassets */,
@@ -142,6 +148,8 @@
 			files = (
 				1546A01A2BDA0D720016C34C /* ContentView.swift in Sources */,
 				1546A0262BDA0DE90016C34C /* Task.swift in Sources */,
+				1546A0302BDA455D0016C34C /* StrikethroughModifier.swift in Sources */,
+				1546A02A2BDA39BA0016C34C /* EditingTaskView.swift in Sources */,
 				1546A0182BDA0D720016C34C /* ToDoListAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,24 +8,13 @@
 import SwiftUI
 import SwiftData
 
-struct StrikethroughModifier: ViewModifier {
-    let strikethrough: Bool
-    
-    func body(content: Content) -> some View {
-        if strikethrough {
-            return AnyView(content.strikethrough())
-        } else {
-            return AnyView(content)
-        }
-    }
-}
-
 struct ContentView: View {
     @Query private var tasks: [Task]
     @Environment(\.modelContext) var modelContext
     @State private var text: String = ""
     @State private var priority: Priority = .medium
     @FocusState private var isTextFieldFocused: Bool
+    @State private var isSheetShowing: Bool = false
     var body: some View {
         NavigationStack {
             HStack {
@@ -77,6 +66,7 @@ struct ContentView: View {
                                 }
                                 Button {
                                     print("edit")
+                                    isSheetShowing = true
                                 } label: {
                                     Image(systemName: "square.and.pencil")
                                     Text("edit")
@@ -87,6 +77,9 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("To do List")
+            .sheet(isPresented: $isSheetShowing) {
+                EditingTaskView(isSheetShowing: $isSheetShowing)
+            }
         }
     }
 }
