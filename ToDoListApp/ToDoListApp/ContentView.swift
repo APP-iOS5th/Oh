@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+struct StrikethroughModifier: ViewModifier {
+    let strikethrough: Bool
+    
+    func body(content: Content) -> some View {
+        if strikethrough {
+            return AnyView(content.strikethrough())
+        } else {
+            return AnyView(content)
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var tasks: [Task] = Task.tasks
     var body: some View {
@@ -21,6 +33,7 @@ struct ContentView: View {
                         Label {
                             Text(task.description)
                                 .tint(.black)
+                                .modifier(StrikethroughModifier(strikethrough: task.completed))
                         } icon: {
                             task.completed ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
                         }
