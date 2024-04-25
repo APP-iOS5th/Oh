@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var todoText: String = ""
-    var tasks: [Task] = Task.tasks
+    @Environment(\.modelContext) var modelContext
+    
+    @State private var todoText: String = "test"
+    @Query var tasks: [Task]
     
     var body: some View {
         NavigationStack {
@@ -18,24 +21,30 @@ struct ContentView: View {
                     ForEach(tasks, id: \.id) { task in
                         HStack(spacing: 20) {
                             Image(systemName: task.completed ? "circle.inset.filled" : "circle")
-                            Text("\(task.description)")
+                                .imageScale(.large)
+                            Text("\(task.content)")
                         }
-                        .padding(.vertical)
+                        .padding(.vertical, 8)
                     }
                 }
             }
             .navigationTitle("To do List")
             .toolbar {
                 Button(action: {
-                    
+                    addTodo(todoText)
                 }) {
                     Image(systemName: "plus")
                 }
             }
         }
     }
+    func addTodo(_ todoText: String) {
+        let newTodo: Task = Task(completed: false, content: todoText, priority: .high)
+        modelContext.insert(newTodo)
+    }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: Task.self, inMemory: true)
 }
