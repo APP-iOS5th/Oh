@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct StrikethroughModifier: ViewModifier {
     let strikethrough: Bool
@@ -20,7 +21,8 @@ struct StrikethroughModifier: ViewModifier {
 }
 
 struct ContentView: View {
-    @State private var tasks: [Task] = Task.tasks
+    @Query private var tasks: [Task]
+    @Environment(\.modelContext) var modelContext
     @State private var text: String = ""
     var body: some View {
         NavigationStack {
@@ -30,8 +32,8 @@ struct ContentView: View {
                     .border(.gray)
                 Button("add") {
                     if !text.isEmpty {
-                        let newTask = Task(completed: false, description: text, priority: .medium)
-                        tasks.append(newTask)
+                        let newTask = Task(completed: false, taskDescription: text, priority: .medium)
+                        modelContext.insert(newTask)
                         text = ""
                     }
                 }
@@ -43,12 +45,12 @@ struct ContentView: View {
             List {
                 ForEach(tasks){task in
                     Button {
-                        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
-                                    tasks[index].completed.toggle()
-                                }
+//                        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+//                                    tasks[index].completed.toggle()
+//                                }
                     } label: {
                         Label {
-                            Text(task.description)
+                            Text(task.taskDescription)
                                 .tint(.black)
                                 .modifier(StrikethroughModifier(strikethrough: task.completed))
                         } icon: {
@@ -57,12 +59,12 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: { indexSet in
-                    tasks.remove(atOffsets: indexSet)
+//                    tasks.remove(atOffsets: indexSet)
                 })
                 .padding()
                 .contextMenu {
                     Button {
-                        print("remove")
+//                        modelContext.delete(task)
                     } label: {
                         Image(systemName: "trash")
                         Text("delete")
