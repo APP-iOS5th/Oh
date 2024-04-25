@@ -12,6 +12,7 @@
 		4BC6BE862BDA0F00008640CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6BE852BDA0F00008640CE /* Assets.xcassets */; };
 		4BC6BE8A2BDA0F00008640CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6BE892BDA0F00008640CE /* Preview Assets.xcassets */; };
 		4BC6BE912BDA0FC3008640CE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6BE902BDA0FC3008640CE /* Task.swift */; };
+		4BC6BE932BDA2148008640CE /* EditTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6BE922BDA2148008640CE /* EditTodoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		4BC6BE872BDA0F00008640CE /* TodoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoList.entitlements; sourceTree = "<group>"; };
 		4BC6BE892BDA0F00008640CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4BC6BE902BDA0FC3008640CE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		4BC6BE922BDA2148008640CE /* EditTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				4BC6BE812BDA0EFF008640CE /* TodoListApp.swift */,
 				4BC6BE832BDA0EFF008640CE /* ContentView.swift */,
+				4BC6BE922BDA2148008640CE /* EditTodoView.swift */,
 				4BC6BE902BDA0FC3008640CE /* Task.swift */,
 				4BC6BE852BDA0F00008640CE /* Assets.xcassets */,
 				4BC6BE872BDA0F00008640CE /* TodoList.entitlements */,
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC6BE932BDA2148008640CE /* EditTodoView.swift in Sources */,
 				4BC6BE842BDA0EFF008640CE /* ContentView.swift in Sources */,
 				4BC6BE912BDA0FC3008640CE /* Task.swift in Sources */,
 				4BC6BE822BDA0EFF008640CE /* TodoListApp.swift in Sources */,
