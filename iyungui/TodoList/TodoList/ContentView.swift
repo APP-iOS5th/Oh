@@ -18,7 +18,8 @@ struct ContentView: View {
     
     @State private var newTodoText: String = ""
     @State private var newPriority: Priority = .medium
-    
+    @State private var editingContents: [UUID: String] = [:]
+
     @Query var tasks: [Task]
 
     var body: some View {
@@ -35,11 +36,24 @@ struct ContentView: View {
                             }
                             .buttonStyle(.plain)
                             
-                            Divider()
-                            
-                            Text("\(task.content)")
-                                .foregroundStyle(task.completed ? .secondary : .primary)
-                                .multilineTextAlignment(.leading)
+                            TextField("", text: Binding<String>(
+                                get: {
+                                    self.editingContents[task.id, default: task.content]
+                                },
+                                set: { newValue in
+                                    self.editingContents[task.id] = newValue
+                                }
+                            ))
+                            .onSubmit {
+                                updateTask(task, with: self.editingContents[task.id, default: task.content])
+                            }
+                            .id(task.id)
+                            .foregroundStyle(task.completed ? .secondary : .primary)
+                                                    
+
+//                            Text("\(task.content)")
+//                                .foregroundStyle(task.completed ? .secondary : .primary)
+//                                .multilineTextAlignment(.leading)
                             
                             Spacer()
                             
@@ -81,16 +95,21 @@ struct ContentView: View {
                 
             }
             .navigationTitle("To do List")
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    EditButton()
-//                }
-//            }
         }
     }
     func addTodo(text: String, priority: Priority) {
         let newTodo: Task = Task(completed: false, content: text, priority: priority)
         modelContext.insert(newTodo)
+    }
+    func updateTask(_ task: Task, with newContent: String) {
+        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+            tasks[index].content = newContent
+            do {
+                try modelContext.save()
+            } catch {
+                print("Failed to save the context: \(error)")
+            }
+        }
     }
 }
 
