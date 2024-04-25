@@ -8,10 +8,21 @@
 import Foundation
 import SwiftData
 
-enum Priority: Comparable, Codable {
+enum Priority: Comparable, Codable, CaseIterable {
     case high
     case medium
     case low
+    
+    var stringValue: String {
+        switch self {
+        case .high:
+            return "High"
+        case .medium:
+            return "Medium"
+        case .low:
+            return "Low"
+        }
+    }
 }
 
 @Model

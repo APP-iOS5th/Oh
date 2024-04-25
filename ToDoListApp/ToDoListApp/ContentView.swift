@@ -24,15 +24,22 @@ struct ContentView: View {
     @Query private var tasks: [Task]
     @Environment(\.modelContext) var modelContext
     @State private var text: String = ""
+    @State private var priority: Priority = .medium
     var body: some View {
         NavigationStack {
             HStack {
+                Picker("Priority", selection: $priority) {
+                    Text("High").tag(Priority.high)
+                    Text("Medium").tag(Priority.medium)
+                    Text("Low").tag(Priority.low)
+                }
+                .frame(width: 110)
                 TextField("New Task", text: $text)
                     .padding()
                     .border(.gray)
                 Button("add") {
                     if !text.isEmpty {
-                        let newTask = Task(completed: false, taskDescription: text, priority: .medium)
+                        let newTask = Task(completed: false, taskDescription: text, priority: priority)
                         modelContext.insert(newTask)
                         text = ""
                     }
@@ -42,31 +49,37 @@ struct ContentView: View {
                 .background(.blue)
             }
             .padding()
-            List(tasks) { task in
-                Button {
-                    task.completed.toggle()
-                } label: {
-                    Label {
-                        Text(task.taskDescription)
-                            .tint(.black)
-                            .modifier(StrikethroughModifier(strikethrough: task.completed))
-                    } icon: {
-                        task.completed ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
-                    }
-                }
-                .padding()
-                .contextMenu {
-                    Button {
-                        modelContext.delete(task)
-                    } label: {
-                        Image(systemName: "trash")
-                        Text("delete")
-                    }
-                    Button {
-                        print("edit")
-                    } label: {
-                        Image(systemName: "square.and.pencil")
-                        Text("edit")
+            List {
+                ForEach(Priority.allCases, id: \.self){ priority in
+                    Section(header: Text(priority.stringValue)){
+                        ForEach(tasks.filter {$0.priority == priority }) { task in
+                            Button {
+                                task.completed.toggle()
+                            } label: {
+                                Label {
+                                    Text(task.taskDescription)
+                                        .tint(.black)
+                                        .modifier(StrikethroughModifier(strikethrough: task.completed))
+                                } icon: {
+                                    task.completed ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                                }
+                            }
+                            .padding(.horizontal)
+                            .contextMenu {
+                                Button {
+                                    modelContext.delete(task)
+                                } label: {
+                                    Image(systemName: "trash")
+                                    Text("delete")
+                                }
+                                Button {
+                                    print("edit")
+                                } label: {
+                                    Image(systemName: "square.and.pencil")
+                                    Text("edit")
+                                }
+                            }
+                        }
                     }
                 }
             }
