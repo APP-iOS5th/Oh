@@ -8,14 +8,53 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var tasks: [Task] = Task.tasks
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(tasks){task in
+                    Button {
+                        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                                    tasks[index].completed.toggle()
+                                }
+                    } label: {
+                        Label {
+                            Text(task.description)
+                                .tint(.black)
+                        } icon: {
+                            task.completed ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                        }
+                    }
+                }
+                .onDelete(perform: { indexSet in
+                    tasks.remove(atOffsets: indexSet)
+                })
+                .padding()
+                .contextMenu {
+                    Button {
+                        print("remove")
+                    } label: {
+                        Image(systemName: "trash")
+                        Text("delete")
+                    }
+                    Button {
+                        print("edit")
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                        Text("edit")
+                    }
+                }
+            }
+            .navigationTitle("To do List")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add"){
+                        print("add")
+                    }
+                    .padding(.trailing)
+                }
+            }
         }
-        .padding()
     }
 }
 
