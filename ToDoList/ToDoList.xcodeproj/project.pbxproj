@@ -7,24 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04C5C8D02BD631ED00EA57F1 /* MememoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C8CF2BD631ED00EA57F1 /* MememoApp.swift */; };
-		04C5C8D22BD631ED00EA57F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C8D12BD631ED00EA57F1 /* ContentView.swift */; };
-		04C5C8D42BD631EF00EA57F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C8D32BD631EF00EA57F1 /* Assets.xcassets */; };
-		04C5C8D72BD631EF00EA57F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C8D62BD631EF00EA57F1 /* Preview Assets.xcassets */; };
-		04C5C8E22BD6993500EA57F1 /* MemoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C8E12BD6993500EA57F1 /* MemoStore.swift */; };
+		04C5CBA62BDA0EA700EA57F1 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5CBA52BDA0EA700EA57F1 /* ToDoListApp.swift */; };
+		04C5CBA82BDA0EA700EA57F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5CBA72BDA0EA700EA57F1 /* ContentView.swift */; };
+		04C5CBAA2BDA0EAA00EA57F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C5CBA92BDA0EAA00EA57F1 /* Assets.xcassets */; };
+		04C5CBAD2BDA0EAA00EA57F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C5CBAC2BDA0EAA00EA57F1 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04C5C8CC2BD631ED00EA57F1 /* Mememo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mememo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04C5C8CF2BD631ED00EA57F1 /* MememoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MememoApp.swift; sourceTree = "<group>"; };
-		04C5C8D12BD631ED00EA57F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		04C5C8D32BD631EF00EA57F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04C5C8D62BD631EF00EA57F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		04C5C8E12BD6993500EA57F1 /* MemoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoStore.swift; sourceTree = "<group>"; };
+		04C5CBA22BDA0EA700EA57F1 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C5CBA52BDA0EA700EA57F1 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
+		04C5CBA72BDA0EA700EA57F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04C5CBA92BDA0EAA00EA57F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04C5CBAC2BDA0EAA00EA57F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04C5C8C92BD631ED00EA57F1 /* Frameworks */ = {
+		04C5CB9F2BDA0EA700EA57F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,38 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04C5C8C32BD631ED00EA57F1 = {
+		04C5CB992BDA0EA700EA57F1 = {
 			isa = PBXGroup;
 			children = (
-				04C5C8CE2BD631ED00EA57F1 /* Mememo */,
-				04C5C8CD2BD631ED00EA57F1 /* Products */,
+				04C5CBA42BDA0EA700EA57F1 /* ToDoList */,
+				04C5CBA32BDA0EA700EA57F1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		04C5C8CD2BD631ED00EA57F1 /* Products */ = {
+		04C5CBA32BDA0EA700EA57F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04C5C8CC2BD631ED00EA57F1 /* Mememo.app */,
+				04C5CBA22BDA0EA700EA57F1 /* ToDoList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		04C5C8CE2BD631ED00EA57F1 /* Mememo */ = {
+		04C5CBA42BDA0EA700EA57F1 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				04C5C8CF2BD631ED00EA57F1 /* MememoApp.swift */,
-				04C5C8D12BD631ED00EA57F1 /* ContentView.swift */,
-				04C5C8E12BD6993500EA57F1 /* MemoStore.swift */,
-				04C5C8D32BD631EF00EA57F1 /* Assets.xcassets */,
-				04C5C8D52BD631EF00EA57F1 /* Preview Content */,
+				04C5CBA52BDA0EA700EA57F1 /* ToDoListApp.swift */,
+				04C5CBA72BDA0EA700EA57F1 /* ContentView.swift */,
+				04C5CBA92BDA0EAA00EA57F1 /* Assets.xcassets */,
+				04C5CBAB2BDA0EAA00EA57F1 /* Preview Content */,
 			);
-			path = Mememo;
+			path = ToDoList;
 			sourceTree = "<group>";
 		};
-		04C5C8D52BD631EF00EA57F1 /* Preview Content */ = {
+		04C5CBAB2BDA0EAA00EA57F1 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				04C5C8D62BD631EF00EA57F1 /* Preview Assets.xcassets */,
+				04C5CBAC2BDA0EAA00EA57F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -73,39 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04C5C8CB2BD631ED00EA57F1 /* Mememo */ = {
+		04C5CBA12BDA0EA700EA57F1 /* ToDoList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04C5C8DA2BD631EF00EA57F1 /* Build configuration list for PBXNativeTarget "Mememo" */;
+			buildConfigurationList = 04C5CBB02BDA0EAA00EA57F1 /* Build configuration list for PBXNativeTarget "ToDoList" */;
 			buildPhases = (
-				04C5C8C82BD631ED00EA57F1 /* Sources */,
-				04C5C8C92BD631ED00EA57F1 /* Frameworks */,
-				04C5C8CA2BD631ED00EA57F1 /* Resources */,
+				04C5CB9E2BDA0EA700EA57F1 /* Sources */,
+				04C5CB9F2BDA0EA700EA57F1 /* Frameworks */,
+				04C5CBA02BDA0EA700EA57F1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Mememo;
-			productName = Mememo;
-			productReference = 04C5C8CC2BD631ED00EA57F1 /* Mememo.app */;
+			name = ToDoList;
+			productName = ToDoList;
+			productReference = 04C5CBA22BDA0EA700EA57F1 /* ToDoList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		04C5C8C42BD631ED00EA57F1 /* Project object */ = {
+		04C5CB9A2BDA0EA700EA57F1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					04C5C8CB2BD631ED00EA57F1 = {
+					04C5CBA12BDA0EA700EA57F1 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = 04C5C8C72BD631ED00EA57F1 /* Build configuration list for PBXProject "Mememo" */;
+			buildConfigurationList = 04C5CB9D2BDA0EA700EA57F1 /* Build configuration list for PBXProject "ToDoList" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,43 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 04C5C8C32BD631ED00EA57F1;
-			productRefGroup = 04C5C8CD2BD631ED00EA57F1 /* Products */;
+			mainGroup = 04C5CB992BDA0EA700EA57F1;
+			productRefGroup = 04C5CBA32BDA0EA700EA57F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04C5C8CB2BD631ED00EA57F1 /* Mememo */,
+				04C5CBA12BDA0EA700EA57F1 /* ToDoList */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		04C5C8CA2BD631ED00EA57F1 /* Resources */ = {
+		04C5CBA02BDA0EA700EA57F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C5C8D72BD631EF00EA57F1 /* Preview Assets.xcassets in Resources */,
-				04C5C8D42BD631EF00EA57F1 /* Assets.xcassets in Resources */,
+				04C5CBAD2BDA0EAA00EA57F1 /* Preview Assets.xcassets in Resources */,
+				04C5CBAA2BDA0EAA00EA57F1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		04C5C8C82BD631ED00EA57F1 /* Sources */ = {
+		04C5CB9E2BDA0EA700EA57F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C5C8E22BD6993500EA57F1 /* MemoStore.swift in Sources */,
-				04C5C8D22BD631ED00EA57F1 /* ContentView.swift in Sources */,
-				04C5C8D02BD631ED00EA57F1 /* MememoApp.swift in Sources */,
+				04C5CBA82BDA0EA700EA57F1 /* ContentView.swift in Sources */,
+				04C5CBA62BDA0EA700EA57F1 /* ToDoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		04C5C8D82BD631EF00EA57F1 /* Debug */ = {
+		04C5CBAE2BDA0EAA00EA57F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -212,7 +208,7 @@
 			};
 			name = Debug;
 		};
-		04C5C8D92BD631EF00EA57F1 /* Release */ = {
+		04C5CBAF2BDA0EAA00EA57F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -268,14 +264,14 @@
 			};
 			name = Release;
 		};
-		04C5C8DB2BD631EF00EA57F1 /* Debug */ = {
+		04C5CBB12BDA0EAA00EA57F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Mememo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -288,7 +284,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chrisbaker.Mememo;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -296,14 +292,14 @@
 			};
 			name = Debug;
 		};
-		04C5C8DC2BD631EF00EA57F1 /* Release */ = {
+		04C5CBB22BDA0EAA00EA57F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Mememo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ToDoList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -316,7 +312,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chrisbaker.Mememo;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -327,25 +323,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04C5C8C72BD631ED00EA57F1 /* Build configuration list for PBXProject "Mememo" */ = {
+		04C5CB9D2BDA0EA700EA57F1 /* Build configuration list for PBXProject "ToDoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04C5C8D82BD631EF00EA57F1 /* Debug */,
-				04C5C8D92BD631EF00EA57F1 /* Release */,
+				04C5CBAE2BDA0EAA00EA57F1 /* Debug */,
+				04C5CBAF2BDA0EAA00EA57F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04C5C8DA2BD631EF00EA57F1 /* Build configuration list for PBXNativeTarget "Mememo" */ = {
+		04C5CBB02BDA0EAA00EA57F1 /* Build configuration list for PBXNativeTarget "ToDoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04C5C8DB2BD631EF00EA57F1 /* Debug */,
-				04C5C8DC2BD631EF00EA57F1 /* Release */,
+				04C5CBB12BDA0EAA00EA57F1 /* Debug */,
+				04C5CBB22BDA0EAA00EA57F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 04C5C8C42BD631ED00EA57F1 /* Project object */;
+	rootObject = 04C5CB9A2BDA0EA700EA57F1 /* Project object */;
 }

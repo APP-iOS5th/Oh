@@ -20,8 +20,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(memos) { memo in
+            List(memos) { memo in
                     HStack {
                         VStack(alignment: .leading) {
                             Text("\(memo.text)")
@@ -34,7 +33,6 @@ struct ContentView: View {
                     }
                     .padding()
                     .foregroundColor(.white)
-                    .background(.black)
                     .shadow(radius: 3)
                     .padding()
                     .contextMenu {
@@ -51,7 +49,7 @@ struct ContentView: View {
                 .listStyle(.plain)
                 .navigationTitle("mememo")
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             isSheetShowing = true
                         } label: {
@@ -60,16 +58,65 @@ struct ContentView: View {
                     }
                 }
                 .sheet(isPresented: $isSheetShowing) {
-                    MemoAddView(isSheetShowing: $isSheetShowing, memoText: $memoText, memoColor: $memoColor, colors: colors)
+                    MemoAddView(isSheetShowing: $isSheetShowing)
                 }
-            }
-//            func removeMemo(_ memo: Memo) {
-//                modelContext.delete(memo)
-//            }
-//            func addMemo() {
-//                modelContext.insert(Memo(text: ""))
             }
         }
     }
-
+    struct MemoAddView: View {
+        @Environment(\.modelContext) var modelContext
+        @Binding var isSheetShowing: Bool
+        @State var memoText: String = ""
+        @State var memoColor: Color = .cyan
+        let colors: [Color] = [.blue, .cyan, .yellow, .indigo]
+        
+        var body: some View {
+            VStack {
+                HStack {
+                    Button("취소") {
+                        isSheetShowing = false }
+                    Spacer()
+                    Button("완료") {
+                        addMemo(memoText)
+                        isSheetShowing = false
+                    }
+                    .disabled(memoText.isEmpty)
+                }
+                HStack {
+                    ForEach(colors, id: \.self) { color in
+                        Button { memoColor = color } label: {
+                            HStack {
+                                Spacer()
+                                if color == memoColor {
+                                    Image(systemName: "checkmark.circle")
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                            .frame(height: 50)
+                            .foregroundColor(.white)
+                            .background(color)
+                            .shadow(radius: color == memoColor ? 8 : 0)
+                        }
+                    }
+                }
+                Divider()
+                    .padding()
+                TextField("메모를 입력하세요", text: $memoText, axis: .vertical)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(memoColor)
+                    .shadow(radius: 3)
+                Spacer()
+            }
+        }
+        func addMemo(_ text: String) {
+            let memo = Memo(id: UUID(), text: text, created: Date())
+            modelContext.insert(memo)
+        }
+    }
+#Preview {
+    ContentView()
+        .modelContainer(for: Memo.self)
+}
 
