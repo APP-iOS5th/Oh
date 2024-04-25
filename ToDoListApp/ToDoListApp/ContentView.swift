@@ -25,6 +25,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @State private var text: String = ""
     @State private var priority: Priority = .medium
+    @FocusState private var isTextFieldFocused: Bool
     var body: some View {
         NavigationStack {
             HStack {
@@ -37,11 +38,13 @@ struct ContentView: View {
                 TextField("New Task", text: $text)
                     .padding()
                     .border(.gray)
+                    .focused($isTextFieldFocused)
                 Button("add") {
                     if !text.isEmpty {
                         let newTask = Task(completed: false, taskDescription: text, priority: priority)
                         modelContext.insert(newTask)
                         text = ""
+                        isTextFieldFocused = false
                     }
                 }
                 .padding()
