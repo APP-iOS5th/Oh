@@ -8,35 +8,35 @@
 import WidgetKit
 import SwiftUI
 
+struct TaskEntry: TimelineEntry {
+    let date: Date
+    let task: Task
+}
+
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+    func placeholder(in context: Context) -> TaskEntry {
+        TaskEntry(date: Date(), task: .task)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+    func getSnapshot(in context: Context, completion: @escaping (TaskEntry) -> ()) {
+        let entry = TaskEntry(date: Date(), task: .task)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+        var entries: [TaskEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
+            let entry = TaskEntry(date: entryDate, task: .task)
             entries.append(entry)
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
 }
 
 struct TodoWidgetEntryView : View {
@@ -47,8 +47,8 @@ struct TodoWidgetEntryView : View {
             Text("Time:")
             Text(entry.date, style: .time)
 
-            Text("Emoji:")
-            Text(entry.emoji)
+            Text("Task:")
+            Text(entry.task.content)
         }
     }
 }
@@ -75,6 +75,6 @@ struct TodoWidget: Widget {
 #Preview(as: .systemSmall) {
     TodoWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    TaskEntry(date: .now, task: Task(completed: false, content: "Todo", priority: .high))
+    TaskEntry(date: .now, task: Task(completed: false, content: "Todo", priority: .high))
 }

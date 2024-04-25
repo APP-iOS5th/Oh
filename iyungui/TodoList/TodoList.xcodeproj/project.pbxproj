@@ -18,6 +18,7 @@
 		C60935F22BDA4C060034D44D /* TodoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60935F12BDA4C060034D44D /* TodoWidget.swift */; };
 		C60935F42BDA4C090034D44D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60935F32BDA4C090034D44D /* Assets.xcassets */; };
 		C60935F82BDA4C090034D44D /* TodoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C60935E82BDA4C060034D44D /* TodoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C60935FD2BDA4D150034D44D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60935AC2BDA0DE80034D44D /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C60935F02BDA4C060034D44D /* TodoWidgetBundle.swift in Sources */,
+				C60935FD2BDA4D150034D44D /* Task.swift in Sources */,
 				C60935F22BDA4C060034D44D /* TodoWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

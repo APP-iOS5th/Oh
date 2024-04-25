@@ -39,15 +39,15 @@ class Task: Identifiable {
     }
 }
 
-//
-//extension Task {
-//    static var tasks = [
-//        Task(completed: true, content: "Wake up", priority: .low ),
-//        Task(completed: false, content: "Shower", priority: .medium),
-//        Task(completed: false, content: "Code", priority: .high),
-//        Task(completed: false, content: "Eat", priority: .high ),
-//        Task(completed: false, content: "Sleep", priority: .high),
-//        Task(completed: false, content: "Get groceries", priority: .high)
-//    ]
-//    static var task = tasks[0]
-//}
+
+extension Task {
+    static var tasks = [
+        Task(completed: true, content: "Wake up", priority: .low ),
+        Task(completed: false, content: "Shower", priority: .medium),
+        Task(completed: false, content: "Code", priority: .high),
+        Task(completed: false, content: "Eat", priority: .high ),
+        Task(completed: false, content: "Sleep", priority: .high),
+        Task(completed: false, content: "Get groceries", priority: .high)
+    ]
+    static var task = tasks[0]
+}
