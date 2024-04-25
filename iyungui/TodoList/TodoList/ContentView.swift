@@ -46,35 +46,43 @@ struct ContentView: View {
                     }
                 }
                 Spacer()
+                
+                Picker("우선순위", selection: $newPriority) {
+                    Image(systemName: "star.fill").tag(Priority.high)
+                    Image(systemName: "star.fill.left").tag(Priority.medium)
+                    Image(systemName: "star").tag(Priority.low)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
+                TextField("New Task", text: $newTodoText)
+                    .padding()
+                
+                Button(action: {
+                    addTodo(text: newTodoText, priority: newPriority)
+                    newTodoText = ""
+                }) {
+                    Text("A D D")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding()
+                        .disabled(newTodoText.isEmpty)
+                }
+                
             }
             .navigationTitle("To do List")
-            
-            Picker("우선순위", selection: $newPriority) {
-                Image(systemName: "star.fill").tag(Priority.high)
-                Image(systemName: "star.fill.left").tag(Priority.medium)
-                Image(systemName: "star").tag(Priority.low)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    EditButton()
+                }
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
             
-            TextField("New Task", text: $newTodoText)
-                .padding()
-            
-            Button(action: {
-                addTodo(text: newTodoText, priority: newPriority)
-                newTodoText = ""
-            }) {
-                Text("A D D")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding()
-                    .disabled(newTodoText.isEmpty)
-            }
+
             
         }
     }
