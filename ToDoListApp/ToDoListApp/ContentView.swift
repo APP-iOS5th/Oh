@@ -21,8 +21,25 @@ struct StrikethroughModifier: ViewModifier {
 
 struct ContentView: View {
     @State private var tasks: [Task] = Task.tasks
+    @State private var text: String = ""
     var body: some View {
         NavigationStack {
+            HStack {
+                TextField("New Task", text: $text)
+                    .padding()
+                    .border(.gray)
+                Button("add") {
+                    if !text.isEmpty {
+                        let newTask = Task(completed: false, description: text, priority: .medium)
+                        tasks.append(newTask)
+                        text = ""
+                    }
+                }
+                .padding()
+                .foregroundStyle(.white)
+                .background(.blue)
+            }
+            .padding()
             List {
                 ForEach(tasks){task in
                     Button {
@@ -59,14 +76,6 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("To do List")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add"){
-                        print("add")
-                    }
-                    .padding(.trailing)
-                }
-            }
         }
     }
 }
