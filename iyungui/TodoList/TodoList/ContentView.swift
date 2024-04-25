@@ -36,6 +36,7 @@ struct ContentView: View {
                             }
                             .buttonStyle(.plain)
                             
+                            // MARK: - Editable
                             TextField("", text: Binding<String>(
                                 get: {
                                     self.editingContents[task.id, default: task.content]
@@ -48,6 +49,7 @@ struct ContentView: View {
                                 updateTask(task, with: self.editingContents[task.id, default: task.content])
                             }
                             .id(task.id)
+                            .fontWeight(task.priority == .high ? .bold : .regular)
                             .foregroundStyle(task.completed ? .secondary : .primary)
                                                     
 
