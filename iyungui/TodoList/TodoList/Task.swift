@@ -12,6 +12,17 @@ enum Priority: Comparable, Codable {
     case high
     case medium
     case low
+    
+    var imageName: String {
+        switch self {
+        case .high:
+            return "star.fill"
+        case .medium:
+            return "star.star.fill.left"
+        case .low:
+            return "star"
+        }
+    }
 }
 
 @Model
