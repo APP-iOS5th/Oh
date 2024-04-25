@@ -22,7 +22,7 @@ struct Task: Identifiable {
 
 extension Task {
     static var tasks = [
-        Task(completed: false, description: "Wake up", priority: .low ),
+        Task(completed: true, description: "Wake up", priority: .low ),
         Task(completed: false, description: "Shower", priority: .medium),
         Task(completed: false, description: "Code", priority: .high),
         Task(completed: false, description: "Eat", priority: .high ),

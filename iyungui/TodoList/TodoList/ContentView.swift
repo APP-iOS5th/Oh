@@ -9,15 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var todoText: String = ""
+    var tasks: [Task] = Task.tasks
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(tasks, id: \.id) { task in
+                        HStack(spacing: 20) {
+                            Image(systemName: task.completed ? "circle.inset.filled" : "circle")
+                            Text("\(task.description)")
+                        }
+                        .padding(.vertical)
+                    }
+                }
+            }
+            .navigationTitle("To do List")
+            .toolbar {
+                Button(action: {
+                    
+                }) {
+                    Image(systemName: "plus")
+                }
+            }
         }
-        .padding()
     }
 }
 
