@@ -93,4 +93,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .modelContainer(for: Task.self)
 }
