@@ -18,7 +18,7 @@ enum Priority: Comparable, Codable {
         case .high:
             return "star.fill"
         case .medium:
-            return "star.star.fill.left"
+            return "star.fill.left"
         case .low:
             return "star"
         }

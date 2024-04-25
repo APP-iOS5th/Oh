@@ -35,23 +35,38 @@ struct ContentView: View {
                         .padding(.vertical, 8)
                     }
                 }
+                Spacer()
             }
             .navigationTitle("To do List")
             .toolbar {
-                Button(action: {
-                    addTodo(text: newTodoText, priority: newPriority)
-                }) {
-                    Image(systemName: "plus")
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        addTodo(text: newTodoText, priority: newPriority)
+                        newTodoText = ""
+                    }) {
+                        Text("추가")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
                 }
             }
             
             Divider()
             
             Picker("우선순위", selection: $newPriority) {
-                Image(systemName: "star.fill")
-                Image(systemName: "star.star.fill.left")
-                Image(systemName: "star.star")
+                Image(systemName: "star.fill").tag(Priority.high)
+                Image(systemName: "star.fill.left").tag(Priority.medium)
+                Image(systemName: "star").tag(Priority.low)
             }
+            .pickerStyle(SegmentedPickerStyle())
+            
+            TextField("New Task", text: $newTodoText)
+                .padding()
         }
     }
     func addTodo(text: String, priority: Priority) {
