@@ -78,7 +78,8 @@ struct ContentView: View {
             }
             .navigationTitle("To do List")
             .sheet(isPresented: $isSheetShowing) {
-                EditingTaskView(isSheetShowing: $isSheetShowing)
+//                EditingTaskView(isSheetShowing: $isSheetShowing)
+                EditingTaskView()
             }
         }
     }
