@@ -15,6 +15,9 @@ struct ContentView: View {
     @State private var priority: Priority = .medium
     @FocusState private var isTextFieldFocused: Bool
     @State private var isSheetShowing: Bool = false
+    @State private var editingTask: Task?
+    @State private var editingText: String = ""
+    @State private var editingPriority: Priority = .medium
     var body: some View {
         NavigationStack {
             HStack {
@@ -66,6 +69,9 @@ struct ContentView: View {
                                 }
                                 Button {
                                     print("edit")
+                                    editingTask = task
+                                    editingText = task.taskDescription
+                                    editingPriority = task.priority
                                     isSheetShowing = true
                                 } label: {
                                     Image(systemName: "square.and.pencil")
@@ -78,8 +84,7 @@ struct ContentView: View {
             }
             .navigationTitle("To do List")
             .sheet(isPresented: $isSheetShowing) {
-//                EditingTaskView(isSheetShowing: $isSheetShowing)
-                EditingTaskView()
+                EditingTaskView(task: $editingTask, isSheetShowing: $isSheetShowing, text: $editingText, priority: $editingPriority)
             }
         }
     }

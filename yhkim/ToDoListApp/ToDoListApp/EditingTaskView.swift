@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct EditingTaskView: View {
-//    @Binding var isSheetShowing:Bool
-    @State var isSheetShowing: Bool = true
-    @State var text:String = "test"
-    @State var priority: Priority = .medium
-    @FocusState var isTextFieldFocused: Bool
+    @Binding var task: Task?
+    @Binding var isSheetShowing: Bool
+    @Binding var text: String
+    @Binding var priority: Priority
     var body: some View {
         VStack {
             HStack {
                 Button("취소") {isSheetShowing = false}
                 Spacer()
                 Button("완료") {
-                    
+                    if let editingTask = task {
+                        editingTask.taskDescription = text
+                        editingTask.priority = priority
+                    } else {
+                        print("error")
+                    }
+                    isSheetShowing = false
                 }
+                .disabled(text.isEmpty)
             }
             .padding()
             List {
@@ -35,13 +41,8 @@ struct EditingTaskView: View {
                     TextField("New Task", text: $text)
                         .padding()
                         .border(.gray)
-                        .focused($isTextFieldFocused)
                 }
             }
         }
     }
-}
-
-#Preview {
-    EditingTaskView()
 }
