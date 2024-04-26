@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftData
 
 struct TaskEntry: TimelineEntry {
     let date: Date
@@ -55,12 +56,26 @@ struct TodoWidgetEntryView : View {
 
 struct TodoWidget: Widget {
     let kind: String = "TodoWidget"
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Task.self,
+        ])
+
+        let modelConfiguration = ModelConfiguration(schema: schema)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 TodoWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
+                    .modelContainer(sharedModelContainer)
             } else {
                 TodoWidgetEntryView(entry: entry)
                     .padding()
