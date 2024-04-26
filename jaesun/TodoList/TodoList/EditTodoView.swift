@@ -9,16 +9,21 @@ import SwiftUI
 
 struct EditTodoView: View {
     @State var editDescription: String = ""
+    @State var task: Task
     var body: some View {
         NavigationStack {
             List{
-                Text("기존 내용")
+                Text("\(task.description)")
                 TextField("변경할 내용",text: $editDescription)
             }
+
             .toolbar{
                 ToolbarItemGroup(placement: .bottomBar){
                     Button("변경"){
-                        //TODO:
+                        //TODO: 변경 누르면 갑 저장
+                        task.description = editDescription
+                        print(editDescription)
+                        print(task.description)
                     }
                 }
             }
@@ -27,5 +32,5 @@ struct EditTodoView: View {
 }
 
 #Preview {
-    EditTodoView()
+    EditTodoView(task: Task.tasks[0])
 }

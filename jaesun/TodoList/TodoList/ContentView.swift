@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isSheetShowing: Bool = false
-    @Binding  var tasks = [Task]
+    @Binding var tasks: [Task]
     var body: some View {
         NavigationStack{
             List {
-                ForEach(tasks) {task in
+                ForEach(tasks.indices, id: \.self) { index in
                     
-                    NavigationLink(destination: EditTodoView()) {
-                        Text("\(task.description)")
+                    NavigationLink(destination: EditTodoView(task: tasks[index])) {
+                        Text("\(tasks[index].description)")
                     }
                 }
             }
@@ -74,6 +74,6 @@ struct AddTodoView: View {
 
 
 #Preview {
-    ContentView()
+    ContentView(tasks: .constant(Task.tasks))
 }
 
