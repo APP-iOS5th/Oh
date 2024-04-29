@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyB4fLIcjE8qQvwU1l2VBl509tF2HzbewnU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1093990922863</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>yehjinjang.RemoteConfig</string>
+	<key>PROJECT_ID</key>
+	<string>fir-remoteconfigapp-af46b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fir-remoteconfigapp-af46b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1093990922863:ios:e8f45f09048cc80a096b9a</string>
+</dict>
+</plist>
