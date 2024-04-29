@@ -5,7 +5,6 @@
 //  Created by 장예진 on 4/29/24.
 //
 
-
 import SwiftUI
 
 struct MainView : View {
@@ -71,12 +70,13 @@ struct OnboardingStepView: View {
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
             
-            if index == 3 {
-                Button("Let's Dig in!") {
-                    showMainView = true
-                }
-                .padding()
-            }
+//            if index == 3 
+//            {
+////                Button("Let's Dig in!") {
+////                    showMainView = true
+//                }
+//                .padding()
+//            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
