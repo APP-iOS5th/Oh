@@ -42,8 +42,9 @@ struct OnboardingView: View {
                                 showMainView = true
                             }
                         }) {
-                            Text("next")
+                            Text("다음 >")
                                 .padding()
+                                .font(.system(size: 22))
                         }
                     }
                     Spacer()

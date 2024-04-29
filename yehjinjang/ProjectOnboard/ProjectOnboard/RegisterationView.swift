@@ -42,6 +42,8 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
 }
 
+//TODO : Register word  pixel 5 move
+
 struct RegistrationView: View {
     @State private var username: String = ""
     @State private var profileImage: UIImage? = nil

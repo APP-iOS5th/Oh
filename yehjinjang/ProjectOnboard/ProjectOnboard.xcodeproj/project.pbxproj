@@ -60,8 +60,8 @@
 				B84E29EB2BDFC9DE006EBF0D /* ProjectOnboardApp.swift */,
 				B84E29ED2BDFC9DE006EBF0D /* ContentView.swift */,
 				B84E2A5F2BDFE363006EBF0D /* RegisterationView.swift */,
-				B84E2A612BDFEBAF006EBF0D /* FirstView.swift */,
 				B84E2A5D2BDFE26A006EBF0D /* OnboardingView.swift */,
+				B84E2A612BDFEBAF006EBF0D /* FirstView.swift */,
 				B84E29EF2BDFC9DF006EBF0D /* Assets.xcassets */,
 				B84E29F12BDFC9E0006EBF0D /* Preview Content */,
 			);
