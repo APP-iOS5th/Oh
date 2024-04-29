@@ -5,39 +5,73 @@
 //  Created by 장예진 on 4/29/24.
 //
 
-import SwiftUI
 
-struct ContentView : View {
-    @State private var currentPage = 0
-    
-    var body: some View {
-        TabView(selection: $currentPage) {
-            ForEach(0..<4, id : \.self) { index in
-                OnboardingStepView(index: index)
-            }
-        }
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+
+import SwiftUI
+//main 으로 넘어가는 예시
+struct MainView : View {
+    var body : some View {
+        Text("Welcome to LAB5 Paking APP")
+        //main layout details 구냥 예시로
     }
 }
 
+struct ContentView: View {
+    @State private var currentPage = 0
+    @State private var showMainView = false
+        
+    var body: some View {
+        // 메인 화면으로 바로 이동하는 경우를 처리
+        if showMainView {
+            MainView()
+        } else {
+            // 온보딩 화면을 표시
+            TabView(selection: $currentPage) {
+                ForEach(0..<4, id: \.self) { index in
+                    OnboardingStepView(index: index, showMainView: $showMainView)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+        }
+    }
+}
+
+    
+    
+//    //onboarding View
+//
+//    var body: some View {
+//        TabView(selection: $currentPage) {
+//            ForEach(0..<4, id : \.self) { index in
+//                OnboardingStepView(index: index)
+//            }
+//        }
+//        .tabViewStyle(PageTabViewStyle())
+//        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+//    }
+//}
+
 struct OnboardingStepView : View {
     var index : Int
+    //binding 을 통해 메인 화면으로 전화하는 상태변수 선언
+    @Binding var showMainView : Bool
     
     var body: some View {
         VStack {
-            Image("onboarding")
+            Image("onboardingImage") //예시 이미지 (3개를 각각 넣으면 좋을까? 어떻게?) 이건 나중에
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .padding()
             Text(descriptionText)
                 .font(.headline)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
 
             if index == 3 {
-                Button("Let's Dig in!"){
+                Button("Let's Dig in! "){
                 }
-                .padding()
+                .padding(.leastNormalMagnitude)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
