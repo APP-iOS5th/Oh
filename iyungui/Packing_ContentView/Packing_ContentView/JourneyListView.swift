@@ -40,8 +40,12 @@ struct JourneyListView: View {
             List(journeys) { journey in
                 NavigationLink(value: journey) {
                     JourneySummaryView(journey: journey)
+                        .frame(height: 150)
                 }
+                .listRowSeparator(.hidden)
+
             }
+            .listStyle(.plain)
             .navigationDestination(for: Journey.self) { journey in
                 JourneyDetailView(journey: journey)
             }
@@ -58,6 +62,8 @@ struct JourneyListView: View {
             .sheet(isPresented: $isNewJourneyPresented) {
                 // MARK: -  AddJourneyView 추가
                 EmptyView()
+                    .presentationDetents([.medium, .large])
+                    .presentationCornerRadius(21)
             }
         }
     }
@@ -90,15 +96,18 @@ struct JourneySummaryView: View {
         .background(
             ZStack {
                 backgroundImage
+
                 LinearGradient(gradient: Gradient(stops: [
                     .init(color: .white, location: 0),
                     .init(color: .white.opacity(0.8), location: 0.5),
                     .init(color: .clear, location: 1)
                 ]), startPoint: .leading, endPoint: .trailing) // 왼쪽에서 오른쪽으로의 선형 그라데이션
             }
+                .frame(height: 150)
+                .clipped()
+                .shadow(radius: 4)
         )
         .scaledToFill()
-        .padding()
     }
 }
 
