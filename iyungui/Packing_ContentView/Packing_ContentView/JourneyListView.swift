@@ -40,9 +40,11 @@ struct JourneyListView: View {
             List(journeys) { journey in
                 NavigationLink(value: journey) {
                     JourneySummaryView(journey: journey)
-                        .frame(height: 150)
+                        .frame(height: 100)
                 }
                 .listRowSeparator(.hidden)
+                .cornerRadius(3.0)
+                .shadow(radius: 3, x: 3, y: 3)
 
             }
             .listStyle(.plain)
@@ -51,6 +53,7 @@ struct JourneyListView: View {
             }
             .navigationTitle("JourneyListView")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color("mainColor"), for: .navigationBar)
             .toolbar {
                 Button {
                     isNewJourneyPresented.toggle()
@@ -82,30 +85,37 @@ struct JourneySummaryView: View {
             backgroundImage = nil
         }
         
-        return VStack(alignment: .leading, spacing: 5) {
+        return VStack(alignment: .leading, spacing: 4) {
             Text(journey.destination)
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
             
             Text("\(journey.activities.joined(separator: ", "))")
                 .font(.callout)
+                .fontWeight(.thin)
+
             
             Text(journey.duration)
                 .font(.caption)
+                .fontWeight(.ultraLight)
+
         }
+        .padding()
         .background(
             ZStack {
-                backgroundImage
+                if let background = backgroundImage {
+                    background
+                        .opacity(0.8)
+                }
 
                 LinearGradient(gradient: Gradient(stops: [
-                    .init(color: .white, location: 0),
-                    .init(color: .white.opacity(0.8), location: 0.5),
+                    .init(color: colorScheme == .dark ? Color.black : Color.white.opacity(0.9), location: 0.3),
+                    .init(color: colorScheme == .dark ? Color.black.opacity(0.7) : Color.white.opacity(0.5), location: 0.7),
                     .init(color: .clear, location: 1)
                 ]), startPoint: .leading, endPoint: .trailing) // 왼쪽에서 오른쪽으로의 선형 그라데이션
             }
-                .frame(height: 150)
+                .frame(height: 100)
                 .clipped()
-                .shadow(radius: 4)
         )
         .scaledToFill()
     }
