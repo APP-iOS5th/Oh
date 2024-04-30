@@ -33,7 +33,8 @@ extension Journey {
 
 struct JourneyListView: View {
     var journeys = Journey.sample
-    
+    @State private var isNewJourneyPresented = false
+
     var body: some View {
         NavigationStack {
             List(journeys) { journey in
@@ -44,6 +45,20 @@ struct JourneyListView: View {
             .navigationDestination(for: Journey.self) { journey in
                 JourneyDetailView(journey: journey)
             }
+            .navigationTitle("JourneyListView")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Button {
+                    isNewJourneyPresented.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.headline)
+                }
+            }
+            .sheet(isPresented: $isNewJourneyPresented) {
+                // MARK: -  AddJourneyView 추가
+                EmptyView()
+            }
         }
     }
 }
@@ -51,7 +66,30 @@ struct JourneyListView: View {
 struct JourneySummaryView: View {
     var journey: Journey
     var body: some View {
-        Text("Hello, World!")
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(journey.destination)
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Text("\(journey.activities.joined(separator: ", "))")
+                    .font(.callout)
+                Text(journey.duration)
+                    .font(.caption)
+            }
+//            journey.image
+//                .resizable()
+//                .scaledToFit()
+            
+            if let image = UIImage(named: journey.image) {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Text("Image not found")
+            }
+        }
+        .padding()
     }
 }
 
