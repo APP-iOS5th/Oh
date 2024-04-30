@@ -83,17 +83,24 @@ struct JourneySummaryView: View {
             
             Text("\(journey.activities.joined(separator: ", "))")
                 .font(.callout)
-                .foregroundStyle(Color("mainColor"))
             
             Text(journey.duration)
                 .font(.caption)
         }
-        .background(backgroundImage)
+        .background(
+            ZStack {
+                backgroundImage
+                LinearGradient(gradient: Gradient(stops: [
+                    .init(color: .white, location: 0),
+                    .init(color: .white.opacity(0.8), location: 0.5),
+                    .init(color: .clear, location: 1)
+                ]), startPoint: .leading, endPoint: .trailing) // 왼쪽에서 오른쪽으로의 선형 그라데이션
+            }
+        )
         .scaledToFill()
         .padding()
     }
 }
-
 
 struct JourneyDetailView: View {
     var journey: Journey
