@@ -11,6 +11,7 @@
 		C68C4B602BE07FFE00B62122 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C4B5F2BE07FFE00B62122 /* ContentView.swift */; };
 		C68C4B622BE0800200B62122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C68C4B612BE0800200B62122 /* Assets.xcassets */; };
 		C68C4B652BE0800200B62122 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C68C4B642BE0800200B62122 /* Preview Assets.xcassets */; };
+		C68C4B6C2BE0839400B62122 /* JourneyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C4B6B2BE0839400B62122 /* JourneyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		C68C4B5F2BE07FFE00B62122 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C68C4B612BE0800200B62122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C68C4B642BE0800200B62122 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C68C4B6B2BE0839400B62122 /* JourneyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				C68C4B5D2BE07FFE00B62122 /* Packing_ContentViewApp.swift */,
 				C68C4B5F2BE07FFE00B62122 /* ContentView.swift */,
+				C68C4B6B2BE0839400B62122 /* JourneyListView.swift */,
 				C68C4B612BE0800200B62122 /* Assets.xcassets */,
 				C68C4B632BE0800200B62122 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C68C4B6C2BE0839400B62122 /* JourneyListView.swift in Sources */,
 				C68C4B602BE07FFE00B62122 /* ContentView.swift in Sources */,
 				C68C4B5E2BE07FFE00B62122 /* Packing_ContentViewApp.swift in Sources */,
 			);

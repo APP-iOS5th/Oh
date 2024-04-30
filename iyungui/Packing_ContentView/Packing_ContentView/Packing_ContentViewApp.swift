@@ -11,7 +11,7 @@ import SwiftUI
 struct Packing_ContentViewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            JourneyListView()
         }
     }
 }
