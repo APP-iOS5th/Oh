@@ -64,31 +64,36 @@ struct JourneyListView: View {
 }
 
 struct JourneySummaryView: View {
+    @Environment(\.colorScheme) var colorScheme
     var journey: Journey
+    
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                Text(journey.destination)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Text("\(journey.activities.joined(separator: ", "))")
-                    .font(.callout)
-                Text(journey.duration)
-                    .font(.caption)
-            }
-            
-            if let image = UIImage(named: journey.image) {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                Text("Image not found")
-            }
+        let backgroundImage: Image?
+        
+        if let uiImage = UIImage(named: journey.image) {
+            backgroundImage = Image(uiImage: uiImage)
+        } else {
+            backgroundImage = nil
         }
+        
+        return VStack(alignment: .leading, spacing: 5) {
+            Text(journey.destination)
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("\(journey.activities.joined(separator: ", "))")
+                .font(.callout)
+                .foregroundStyle(Color("mainColor"))
+            
+            Text(journey.duration)
+                .font(.caption)
+        }
+        .background(backgroundImage)
+        .scaledToFill()
         .padding()
     }
 }
+
 
 struct JourneyDetailView: View {
     var journey: Journey
