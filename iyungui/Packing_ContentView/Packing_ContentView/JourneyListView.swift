@@ -25,8 +25,8 @@ struct Journey: Identifiable, Hashable {
 extension Journey {
     static let sample: [Journey] = [
         Journey(destination: "다낭", activities: ["바다", "해변"], image: "다낭", startDate: Date(), endDate: Date().addingTimeInterval(86400 * 5)),
-        Journey(destination: "가평", activities: ["글램핑", "캠핑"], image: "가평", startDate: Date(), endDate: Date().addingTimeInterval(86400 * 7)),
-        Journey(destination: "사하라 사막", activities: ["배낭여행", "사막"], image: "사하라사막", startDate: Date(), endDate: Date().addingTimeInterval(86400 * 3))
+        Journey(destination: "가평", activities: ["글램핑", "캠핑"], image: "캠핑", startDate: Date(), endDate: Date().addingTimeInterval(86400 * 7)),
+        Journey(destination: "사하라 사막", activities: ["배낭여행", "사막"], image: "사막", startDate: Date(), endDate: Date().addingTimeInterval(86400 * 3))
     ]
 }
 
@@ -77,9 +77,6 @@ struct JourneySummaryView: View {
                 Text(journey.duration)
                     .font(.caption)
             }
-//            journey.image
-//                .resizable()
-//                .scaledToFit()
             
             if let image = UIImage(named: journey.image) {
                 Image(uiImage: image)
